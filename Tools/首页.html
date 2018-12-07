@@ -1,0 +1,2983 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<script type="text/javascript" src="//images.zhongmin.cn/zhongmin2017/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/jq/jquery.lazyload.js"></script>
+<script type="text/javascript" src="/js/getUrl.js"></script>
+<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/zmJs.js"></script>
+<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/cookiesUtil.js"></script>
+<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/md5.js"></script>
+<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/common/commonUtil.js"></script>
+<script type="text/javascript">
+   var $session ="F85868D8AFB746D885BE1DDBD087D9AC"
+   var $contextPath="";
+   var $pcId = "1";
+   var $linglingId = "107";
+   var $linglingVipWebsite = "//www.00.com.cn/zero-vip/index.jsp";
+   var $ZMVIPWebsite = "//www.zhongmin.cn/web-manage/main.jsp";
+   var $ZMVIPPath = "null"
+   var $ZEROPath = "//www.00.com.cn"
+   var accidBid = 4
+   var travelBid = 11
+   var healthBid = 12
+   var familyBid = 14
+   var annuityBid = 29
+   var lifeBid =26
+   var enterpriseBid = 31
+   var $organizationCode=110
+   var $creaditCode=112
+   var $companyLogoUrl="//images.zhongmin.cn/wap/company_logo/"
+   var $zmImgUrl="//images.zhongmin.cn/images/2018/320/"
+   var $zmImgUrl2="//images.zhongmin.cn/images/2018/750/"
+   var $sex={
+		   male:0,
+		   female:1,
+		   all:2
+   }
+   var $proType={
+		   main:0,
+		   risk:1,
+		   group:2
+   }
+   var sid=1;
+   var pid=getUrlParam("pid");
+   if(pid==null){
+	   pid=getUrlParamFWUrl("ip");
+   }
+   function createAlert(con,time){
+	   if(time==undefined){
+		   time=3000;
+	   }
+	   $(".alert-box").remove();
+       var _obj=$('<div class="alert-box" style="position:fixed;z-index:99999999;left:47%;top:300px;padding:0 25px;height:48px;line-height: 48px;border-radius:4px;text-align: center;font-size: 14px;color:#fff;background: rgba(0,0,0,0.7)">'+con+'</div>');
+       $('body').append(_obj);
+       setTimeout(function(){
+           $('.alert-box').remove()
+       },time)
+   }
+   function createAlert2(con,time,line){
+	   if(time==undefined){
+		   time=3000;
+	   }
+	   $(".alert-box").remove();
+	   var str = '<div class="alert-box" style="';
+       if(line == 1){
+    	   str = str +'white-space:normal; word-break:break-all; word-wrap:break-word;';
+       }else{
+    	   str = str +'height:48px;';
+       }
+       str = str + ' position:fixed;z-index:99999999;left:47%;top:300px;padding:0 25px;line-height: 48px;border-radius:4px;text-align: center;font-size: 14px;color:#fff;background: rgba(0,0,0,0.7)">'+con+'</div>';
+       var _obj = $(str);
+       $('body').append(_obj);
+       setTimeout(function(){
+           $('.alert-box').remove()
+       },time)
+   }
+   function createAlertClause(con,time){
+	   if(time==undefined){
+		   time=3000;
+	   }
+	   $(".alert-wrapper").remove();
+    var _obj=$( '<div class="alert-wrapper auto-layout" style="position:fixed;z-index:99999999;left: 50%;top:45%;text-align:center;margin-left: -595px;"><div style="padding:10px 25px;border-radius:4px;font-size: 14px;color:#fff;background: rgba(0,0,0,0.7);display: inline-block;">' + con + '</div></div>');
+    $('body').append(_obj);
+    setTimeout(function(){
+        $('.alert-wrapper').remove()
+    },time)
+}
+ //动态加载js或者css
+   function loadjscssfile(filename, filetype) {
+       if (filetype == "js") { //判定文件类型
+           var fileref = document.createElement('script')//创建标签
+           fileref.setAttribute("type", "text/javascript")//定义属性type的值为text/javascript
+           fileref.setAttribute("src", filename)//文件的地址
+       }
+       else if (filetype == "css") { //判定文件类型
+           var fileref = document.createElement("link")
+           fileref.setAttribute("rel", "stylesheet")
+           fileref.setAttribute("type", "text/css")
+           fileref.setAttribute("href", filename)
+       }
+       if (typeof fileref != "undefined")
+           document.getElementsByTagName("head")[0].appendChild(fileref)
+   }
+ //浏览器类型，ie9以下返回false
+   function browserType() {
+	    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+	    var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+	    var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera; //判断是否IE浏览器
+	    if (isIE){
+	         var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+	         reIE.test(userAgent);
+	         var fIEVersion = parseFloat(RegExp["$1"]);
+	         if(fIEVersion < 9){
+	        	 return false;
+	         }else{
+	        	 return true;
+	         }
+	     }else{
+	    	 return true;
+	     }
+	 }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en" id = "head">
+
+
+		<title>中民保险网——华贵守护e家终身寿险_华贵人寿保险_华贵保险</title>
+
+
+    	 <meta name="keywords" content="华贵守护e家终身寿险，华贵人寿守护e家终身寿险，华贵人身保险，华贵人寿保险网上投保" />
+
+
+   		 <meta name="description" content="中民保险网为您提供【华贵守护e家终身寿险，华贵人寿保险】条款、保费、保险责任、费率表等相关信息，网上投保华贵人寿优爱宝终身寿险，华贵人寿保险，华贵人身保险就上中民保险网！" />
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href=" //images.zhongmin.cn/zhongmin2017/header/css/header2017.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//images.zhongmin.cn/zhongmin2017/details/css/details-2017.css"/>
+    <link rel="stylesheet" href="//images.zhongmin.cn/zhongmin2017/xb-box/css/xb-box.css"/>
+    <script type="text/javascript" src="/js/common/replaceProduct.js"></script>
+    <script language="javascript" type="text/javascript" src="//images.zhongmin.cn/DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="/js/common/healthAndLife.js?var=20181129"></script>
+	<script type="text/javascript" src="/js/life/life-init-details.js"></script>
+    <script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/cookiesUtil.js"></script>
+	<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/zmJs.js"></script>
+	<script type="text/javascript" src="/js/getUrl.js"></script>
+	<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/comment/comments_hide&show.js"></script>
+    <script type="text/javascript" src="/js/browse.js"></script>
+    <script type="text/javascript" src="/js/scroll/scrollList.js?v=20180920"></script>
+    <script type="text/javascript" src="/js/myCollections.js"></script>
+	<script type="text/javascript"  src="/js/life/initView.js?var=1101"> </script>
+	<script type="text/javascript"  src="/js/life/skip-order.js?var=20181129"> </script>
+	<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/md5.js"></script>
+	<script type="text/javascript" src="/js/cart/product_cart.js?var=20181129"></script>
+	<script type="text/javascript" src="/js/common/preferInfo.js"></script>
+   	<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/compare/compare.js"></script>
+    <script type="text/javascript" src="/js/common/specialProduct.js"></script>
+    <script type="text/javascript" src="/js/infoJF.js"></script>
+    <script type="text/javascript" src="/js/common/addRisk.js?var=20181113"></script>
+    <script type="text/javascript" src="/js/health/renewal.js"></script>
+    <title id="title"></title>
+      <style type="text/css">
+		.zm_hide{
+			 display:none !important;
+		}
+	</style>
+</head>
+<body class="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     <script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/header/hover.js"></script>
+    <link rel="stylesheet" href="//images.zhongmin.cn/zhongmin2017/header/css/header2017.css"/>
+    <script src="//images.zhongmin.cn/js/buy/Topics/index.js?ver=20180103"></script>
+    <script type="text/javascript" src="/js/getUrl.js"></script>
+    <script src="//images.zhongmin.cn/js2018_pc/zm_pc/index/header2017.js"></script>
+     <script src="//images.zhongmin.cn/js2018_pc/zm_pc/json2.js"></script>
+    <script type="text/javascript" src="/js/header/headerDeal.js"></script>
+    <script type="text/javascript" src="/js/trafficRecord.js"></script>
+    <script type="text/javascript" src="/js/common/img-lazyload.js"></script>
+
+
+    <!-- 右边浮动栏js start-->
+	<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/cart/cart-entity.js"></script>
+	<script type="text/javascript" src="//images.zhongmin.cn/js2018_pc/zm_pc/cookiesUtil.js"></script>
+	<script type="text/javascript" src="/js/cart/rightCart.js?var=20181026"></script>
+	<script type="text/javascript" src="/js/compare/compare.js"></script>
+	<script type="text/javascript" src="https://service.zhongmin.cn/js/detector.aspx?siteid=666666"></script>
+    <!-- 右边浮动栏js end-->
+
+    <script>
+    var searchTop={
+   		$id:"#searchDiv",
+ 		$name:"searchTop",
+ 		data:{},
+        refreach:function(){
+  	       refreachView(this);
+  	    }
+    }
+        $(function(){
+ 	  		getLoginInfo();
+ 	  		showFocusImg(); //展示图片
+ 	  		//初始化顶部导航栏数据
+ 	  		initZMJs([searchTop]);
+ 	  		initSearchTopData(loadjscssfile);
+            //getHeadInfo();
+            //优惠和严选信息
+            // indexProTopics();
+  /*           if($("#keyword").length != 0){
+            	$(".i-search").eq(0).val(decodeURI(getUrlParam("keyword")) );
+     			$("#keyword").text("\"" + decodeURI(getUrlParam("keyword")) + "\"");
+     			refreshList(decodeURI(getUrlParam("keyword")),getSearchItem());
+     		}  */
+
+            //分类导航栏弹出框
+            $('.subnav li').hover(function(){
+                $(this).addClass('subnav-hover');
+                var _index=$(this).index();
+                var subnav=$('.subnav-unfold').eq(_index);
+                subnav.show();
+
+                var i;
+                for(i=0;i< $('.brand-logo').length;i++){
+                    var logoWidth=$('.brand-logo').eq(i).width();
+                    var logoHeight=$('.brand-logo').eq(i).height();
+                    $('.brand-logo').eq(i).css({'margin-left':-logoWidth/2,'margin-top':-logoHeight/2})
+                    var obj=$('.brand-logo').eq(i);
+                	var srcStr=obj.attr("src");
+                	if(srcStr==undefined||srcStr==""){
+                		obj.attr("src",obj.attr("data-src"));
+
+                	}
+                }
+            },function(){
+                $(this).removeClass('subnav-hover');
+                $('.subnav-unfold').hide();
+            })
+            $('.subnav-unfold').hover(function(){
+                var _index=$(this).index()-1;
+                $(this).show();
+                $('.subnav li').eq(_index).addClass('subnav-hover');
+            },function(){
+                var _index=$(this).index()-1;
+                $('.subnav li').eq(_index).removeClass('subnav-hover');
+                $('.subnav-unfold').hide();
+            })
+
+        });
+
+
+    </script>
+
+
+    <!--头部-->
+    <div class="header pr" id = "head">
+           <div class="top-bar">
+              <div class="auto-layout clearfix" >
+              <div id = "login">
+              </div>
+                  <div class="top-right clearfix">
+                      <ul>
+                          <li class="top-right-li phone_zm_wrap"><span class="top-i-mb">
+                              <span class="top-i-up"><a href="/appdownload.jsp">手机中民</a></span></span>
+                              <!--手机中民展开-->
+                              <div class="top-mobilezm" style="display: none;">
+                                  <span class="top-mask1"></span>
+                                  <div class="flol">
+                                      <img width="106px" src="//images.zhongmin.cn/index2016/images/qrcode-wechat.png">
+                                      <p class="f12">关注微信优惠抢先看</p>
+                                  </div>
+                                  <div class="flor">
+                                      <img width="106px" src="//images.zhongmin.cn/index2016/images/qrcode-app.png">
+                                       <p class="f12">下载APP理赔更省心</p>
+                                  </div>
+                              </div>
+                              <!--手机中民展开-->
+                          </li>
+                          <li class="top-right-li"><span class="top-divider"></span><a href="/query/search.jsp?sid=1&type=1" rel="nofollow">理赔查询</a></li>
+                          <li class="top-right-li"><span class="top-divider"></span><a target="_blank" href="/helpCenter.jsp" rel="nofollow">帮助中心</a></li>
+                          <li class="top-right-li"><span class="top-divider"></span><a target="_blank" href="/consulting/news.html" rel="nofollow">保险资讯</a></li>
+                          <li class="top-right-li site_nav_wrap" style="color: rgb(102, 102, 102);"><span class="top-divider"></span>
+                              <a href="javascript:;"><span class="top-i-up">网址导航</span></a>
+                              <!--网址导航展开-->
+                          <!--新修改20171229-->
+                              <div class="site-nav"  style="height:298px;display: none;">
+                                  <span class="top-mask2"></span>
+
+                                  <div class="navigaion clearfix" >
+                                      <div class="navigaion-left flol">
+                                          <h4>保险选购</h4>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/product/travel/list/is1_acHPPLNG.html">旅游保险</a></dt>
+                                              <dd class="mr38"><a href="/product/travel/list/is1_st2_acHPPLNG.html">境内旅游</a></dd>
+                                              <dd class="mr38"><a href="/product/travel/list/is1_st1_acHPPLNG.html">境外旅游</a></dd>
+                                              <dd class="mr68"><a href="/product/travel/list/is1_st3_acHPPLNG.html">申根签证</a></dd>
+                                              <dd><a href="/product/travel/list/is1_ss533_acHPPLNG.html">户外运动</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/product/accid/list/is1_st10_acHPPLNG.html">交通意外</a></dt>
+                                              <dd class="mr38"><a href="/product/accid/list/is1_st9_acHPPLNG.html">综合交通</a></dd>
+                                              <dd class="mr38"><a href="/product/accid/list/is1_hs522_acHPPLNG.html">飞机意外</a></dd>
+                                              <dd class="mr38"><a href="/product/accid/list/is1_st10_hs523_acHPPLNG.html">火车高铁大巴</a></dd>
+                                              <dd><a href="/product/accid/list/is1_hs524_acHPPLNG.html">私家车意外</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/product/accid/list/is1_st9_acHPPLNG.html">综合意外</a></dt>
+                                              <dd class="mr38"><a href="/product/accid/list/is1_sc13_acHPPLNG.html">少儿意外</a></dd>
+                                              <dd class="mr38"><a href="/product/accid/list/is1_sc14_acHPPLNG.html">成年意外</a></dd>
+                                              <dd class="mr68"><a href="/product/accid/list/is1_sc15_acHPPLNG.html">老年意外</a></dd>
+                                              <dd><a href="/product/accid/list/is1_hs516_acHPPLNG.html">高风险职业</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/product/health/list/is1_acHPPLNG.html">健康保险</a></dt>
+                                              <dd class="mr38"><a href="/product/health/list/is1_sc42%3A18%3A1_acHPPLNG.html">少儿健康</a></dd>
+                                              <dd class="mr38"><a href="/product/health/list/is1_sc43%3A60%3A1_acHPPLNG.html">成年健康</a></dd>
+                                              <dd class="mr68"><a href="/product/health/list/is1_sc44%3A90%3A1_acHPPLNG.html">老年健康</a></dd>
+                                              <dd><a href="/product/health/list/is1_sc45%3A0%3A2_acHPPLNG.html">女性健康</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/product/life/list/is1_acHPPLNG.html">人寿保险</a></dt>
+                                              <dd class="mr38"><a href="/product/life/list/is1_st37_acHPPLNG.html">定期寿险</a></dd>
+                                              <dd class="mr38"><a href="/product/life/list/is1_st38_acHPPLNG.html">终身寿险</a></dd>
+                                              <dd class="mr38"><a href="/product/life/list/is1_st39_acHPPLNG.html">理财保险</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/product/family/list/is1_acHPPLNG.html">财产责任</a></dt>
+                                              <dd class="mr38"><a href="/product/family/list/is1_st40_acHPPLNG.html">家庭财产</a></dd>
+                                              <dd class="mr38"><a href="/product/family/list/is1_st59_acHPPLNG.html">资金安全</a></dd>
+                                              <dd class="mr38"><a href="/product/family/list/is1_st58_acHPPLNG.html">个人责任</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/product/enterprise/list/is1_acHPPLNG.html">企业保险</a></dt>
+                                              <dd class="mr38"><a href="/product/enterprise/list/is1_st29_acHPPLNG.html">团体意外</a></dd>
+                                          </dl>
+                                      </div>
+                                      <div class="flol nav-gap"></div>
+                                      <div class="navigaion-middle flol">
+                                          <h4>保险资讯</h4>
+                                          <dl class="navdl clearfix">
+                                              <dt>
+                                              	<a href="/consulting/news.html">保险资讯</a>
+                                              </dt>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/news_10.html">新闻资讯</a>
+                                              </dd>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/news_11.html">中民报道</a>
+                                              </dd>
+
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt>
+                                              	<a href="/consulting/news.html">保险学堂</a>
+                                              </dt>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/news_19.html">保险知识</a>
+                                              </dd>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/news_5.html">选购指南</a>
+                                              </dd>
+                                              <dd>
+                                              	<a href="/consulting/news_6.html">理赔技巧</a>
+                                              </dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt>
+                                              	<a href="/consulting/list_15.html">产品解读</a>
+                                              </dt>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/list_14.html">少儿保险</a>
+                                              </dd>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/list_13.html">成人保险</a>
+                                              </dd>
+                                              <dd>
+                                              	<a href="/consulting/list_15.html">老年保险</a>
+                                              </dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt class="bordernone"></dt>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/list_16.html">旅游保险</a>
+                                              </dd>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/list_17.html">财产保险</a>
+                                              </dd>
+                                              <dd>
+                                              	<a href="/consulting/list_18.html">养老保险</a>
+                                              </dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt class="bordernone"></dt>
+                                              <dd class="mr38">
+                                              	<a href="/consulting/productFeatures.jsp?classId=8&sid=1">产品专题</a>
+                                              </dd>
+                                              <dd>
+                                              	<a href="/company/list?sid=1">保险品牌</a>
+                                              </dd>
+                                          </dl>
+                                      </div>
+                                      <div class="flol nav-gap"></div>
+                                      <div class="navigaion-right flol">
+                                          <h4>服务说明</h4>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/helpCenter.jsp">售前服务</a></dt>
+                                              <dd class="mr38"><a href="/question.jsp?name=投保流程">投保问题</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt><a href="/helpCenter.jsp">售后服务</a></dt>
+                                              <dd class="mr38"><a href="/query/search.jsp?sid=1">保单查询</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt class="bordernone"></dt>
+                                              <dd class="mr38"><a href="/query/search.jsp?sid=1">保单下载</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt class="bordernone"></dt>
+                                              <dd class="mr38"><a href="/question.jsp?name=%E4%BF%9D%E5%8D%95%E5%8F%98%E6%9B%B4">保单变更</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt class="bordernone"></dt>
+                                              <dd class="mr38"><a href="/question.jsp?name=%E9%80%80%E4%BF%9D%E8%AF%B4%E6%98%8E&location=%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98&id=82">退保流程</a></dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt>
+                                              	<a href="/helpCenter.jsp ">理赔服务</a>
+                                              </dt>
+                                              <dd class="mr38">
+                                              	<a href="/helpCenter.jsp">自助理赔</a>
+                                              </dd>
+                                          </dl>
+                                          <dl class="navdl clearfix">
+                                              <dt class="bordernone"></dt>
+                                              <dd class="mr38">
+                                              	<a href="/question.jsp?name=%E8%B5%94%E5%81%BF%E9%97%AE%E9%A2%98&location=%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98&id=82">理赔问题</a>
+                                              </dd>
+                                          </dl>
+                                      </div>
+                                  </div>
+                              </div>
+                          <!--END新修改20171229-->
+                              <!--网址导航展开-->
+                          </li>
+                          <li class="flol hot-line">7x24小时客服热线：<span>400-8822-300</span></li>
+                      </ul>
+                  </div>
+              </div>
+           </div>
+
+
+
+           <div class="auto-layout">
+            <div class="logo-bar clearfix">
+               	  <a class="logo" href="/">
+               	  	<span index=""></span>
+					 <img src="//images.zhongmin.cn/zhongmin2017/header/images/logo.png">
+				  </a>
+
+                <!--search-->
+                <div class="search-box">
+                    <div class="search">
+                    	<input class="search-input i-search" placeholder="搜“百万医疗”试试" type="text" autocomplete="off" id="searchinput">
+                        <div class="search-btn" onclick="headSearch(-1,this)">搜 索</div>
+                        <!--搜索推荐-->
+                        <div class="search-unfold" style="display:none;">
+                            <!-- <span class="clear-btn"></span>   -->
+                        </div>
+                        <!--搜索推荐-->
+                    </div>
+                    <div class="search-word">
+                        <div class="search-hot">
+
+                              <a onclick="searchHot(this)">重大疾病</a>
+
+                              <a onclick="searchHot(this)">住院医疗</a>
+
+                              <a onclick="searchHot(this)">综合意外</a>
+
+                              <a onclick="searchHot(this)">境外旅游</a>
+
+                              <a onclick="searchHot(this)">境内旅游</a>
+
+                        </div>
+                    </div>
+                </div>
+                <!--search-->
+                <div class="flor cart-btn-wrap" id ="buys">
+                  <a href='' class='cart-link pr'>我的购物车<span class='pa cart-nums'>0</span></a>
+		            <a href='javascript:;' class='account-link pr' style='display: none'> 我的账户</a></span>
+		            <span class='login-register clearfix' >
+		            <a class='border-r' href='' target='_blank' rel='nofollow'>登录</a>
+		            <a href='' id="register">注册</a>
+		            </span>
+                </div>
+            </div>
+        </div>
+
+
+           <!--菜单栏-->
+          <div class="auto-layout clearfix">
+              <div class="sort-box flol pr">
+                  <h3 class="sort-tit"><span>全部保险产品</span></h3>
+                  <!--分类-->
+                  <div class="subnav" id="searchDiv" style="display:none;">
+                      <ul>
+                          <li class="nav-li1" style="border-top:none;" >
+                              <h4><a href="/company/list?sid=1&areacode=HPPLNG" >品牌</a></h4>
+                              <div class="subnav-a">
+
+
+	                                <a href="/company/product/list?cid=4&sid=1&areacode=HPPLNG" relId="4">安联财险</a>
+
+	                                <a href="/company/product/list?cid=72&sid=1&areacode=HPPLNG" relId="72">中国人寿</a>
+
+	                                <a href="/company/product/list?cid=7&sid=1&areacode=HPPLNG" relId="7">百年人寿</a>
+
+                              </div>
+                              <span class="b-line b-line-none"></span>
+                              <span class="h-line"></span>
+                          </li>
+                          <li class="nav-li2">
+                              <h4><a href="/product/travel/list/is1_acHPPLNG.html" >旅游</a></h4>
+                              <div class="subnav-a">
+
+                                      <a  href="/product/travel/list/is1_st2_acHPPLNG.html" relId="9" >境内旅游</a>
+
+                                      <a  href="/product/travel/list/is1_st1_acHPPLNG.html" relId="10" >境外旅游</a>
+
+                                      <a  href="/product/travel/list/is1_st3_acHPPLNG.html" relId="36" >申根签证</a>
+
+                              </div>
+                              <span class="b-line b-line-none"></span>
+                              <span class="h-line"></span>
+                          </li>
+                          <li class="nav-li3">
+                              <h4><a href="/product/accid/list/is1_acHPPLNG.html" >意外</a></h4>
+                              <div class="subnav-a">
+
+                                      <a  href="/product/accid/list/is1_st9_acHPPLNG.html" relId="42" >综合意外</a>
+
+                                      <a  href="/product/accid/list/is1_hs514_acHPPLNG.html" relId="43" >意外医疗</a>
+
+                                      <a  href="/product/accid/list/is1_sc13_acHPPLNG.html" relId="72" >少儿意外</a>
+
+                                      <a  href="/product/accid/list/is1_sc14_acHPPLNG.html" relId="73" >成人意外</a>
+
+                                      <a  href="/product/accid/list/is1_sc15_acHPPLNG.html" relId="74" >老年意外</a>
+
+                                      <a  href="/product/accid/list/is1_hs522_acHPPLNG.html" relId="19" >航空意外</a>
+
+                              </div>
+                              <span class="b-line b-line-none"></span>
+                              <span class="h-line"></span>
+                          </li>
+                          <li class="nav-li4">
+                              <h4><a href="/product/health/list/is1_acHPPLNG.html" >健康</a></h4>
+                              <div class="subnav-a">
+
+                                      <a  href="/product/health/list/is1_hs560_acHPPLNG.html" relId="53" >百万医疗</a>
+
+                                      <a  href="/product/health/list/is1_st11_acHPPLNG.html" relId="78" >重大疾病</a>
+
+                                      <a  href="/product/health/list/is1_hs554_acHPPLNG.html" relId="54" >保费豁免</a>
+
+                                      <a  href="/product/health/list/is1_sc42%3A18%3A1_acHPPLNG.html" relId="21" >少儿健康</a>
+
+                                      <a  href="/product/health/list/is1_sc43%3A60%3A1_acHPPLNG.html" relId="22" >成人健康</a>
+
+                                      <a  href="/product/health/list/is1_sc44%3A90%3A1_acHPPLNG.html" relId="51" >老年健康</a>
+
+                              </div>
+                              <span class="b-line b-line-none"></span>
+                              <span class="h-line"></span>
+                          </li>
+                          <li class="nav-li5">
+                              <h4><a href="/product/life/list/is1_acHPPLNG.html" >人寿</a></h4>
+                              <div class="subnav-a">
+
+                                      <a  href="/product/life/list/is1_st37_acHPPLNG.html" relId="25" >定期寿险</a>
+
+                                      <a  href="/product/life/list/is1_st38_acHPPLNG.html" relId="26" >终身寿险</a>
+
+                                      <a  href="/product/annuity/list/is1_acHPPLNG_acHPPLNG.html" relId="82" >理财储蓄</a>
+
+                              </div>
+                              <span class="b-line b-line-none"></span>
+                              <span class="h-line"></span>
+                          </li>
+                          <li class="nav-li6 clearfix subnav-li">
+                              <h4 class="flol"><a  href="/product/family/list/is1_acHPPLNG.html" >财产</a></h4>
+                              <div class="subnav-a flor subnav-a-bot">
+
+                                      <a  href="/product/family/list/is1_st40" relId="29" >家庭财产</a>
+
+                                      <a  href="/chexian/chexianIndex.jsp" relId="243" >车辆保险</a>
+
+                              </div>
+                              <span class="b-line b-line-none"></span>
+                              <span class="h-line"></span>
+                          </li>
+                          <li class="nav-li7 clearfix subnav-li">
+                              <h4 class="flol"><a href="/product/enterprise/list/is1_acHPPLNG.html" >企业</a></h4>
+                              <div class="subnav-a flor subnav-a-bot">
+
+                                      <a  href="/product/enterprise/list/is1_st29_acHPPLNG.html" relId="30" > 团体意外</a>
+
+                              </div>
+                              <span class="h-line"></span>
+                          </li>
+                      </ul>
+                      <!--合作品牌-->
+                      <div class="subnav-unfold" style="display: none;">
+                          <h5 class="unfold-tit">热门保险公司</h5>
+                          <dl class="brand-box clearfix">
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/4_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>安联财险</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=4&sid=1&areacode=HPPLNG" relId="4" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/72_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>中国人寿</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=72&sid=1&areacode=HPPLNG" relId="72" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/7_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>百年人寿</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=7&sid=1&areacode=HPPLNG" relId="7" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/13_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>大都会人寿</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=13&sid=1&areacode=HPPLNG" relId="13" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/17_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>复星联合健康</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=17&sid=1&areacode=HPPLNG" relId="17" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/23_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>合众人寿</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=23&sid=1&areacode=HPPLNG" relId="23" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/30_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>华泰保险</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=30&sid=1&areacode=HPPLNG" relId="30" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/33_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>君龙人寿</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=33&sid=1&areacode=HPPLNG" relId="33" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/38_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>美亚财险</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=38&sid=1&areacode=HPPLNG" relId="38" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/40_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>中国平安</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=40&sid=1&areacode=HPPLNG" relId="40" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/43_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>中国人保</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=43&sid=1&areacode=HPPLNG" relId="43" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/53_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>中国太平</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=53&sid=1&areacode=HPPLNG" relId="53" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/54_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>太平洋保险</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=54&sid=1&areacode=HPPLNG" relId="54" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/55_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>泰康保险</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=55&sid=1&areacode=HPPLNG" relId="55" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/58_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>同方全球人寿</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=58&sid=1&areacode=HPPLNG" relId="58" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/60_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>新华人寿</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=60&sid=1&areacode=HPPLNG" relId="60" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/65_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>阳光保险</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=65&sid=1&areacode=HPPLNG" relId="65" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/12_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>中再集团</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=12&sid=1&areacode=HPPLNG" relId="12" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/6_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>安心互联网保险</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=6&sid=1&areacode=HPPLNG" relId="6" ></a>
+                                  </div>
+                              </dd>
+
+                              <dd >
+                                  <img class="brand-logo" src="//images.zhongmin.cn/wap/companygroup_logo/79_01.png"  alt=""/>
+                                  <div class="brand-hover-box">
+                                      <p>众安保险</p>
+                                      <a class="pro-alink"  href="/company/product/list?cid=79&sid=1&areacode=HPPLNG" relId="79" ></a>
+                                  </div>
+                              </dd>
+
+                          </dl>
+                          <div class="unfo-check-more"><a href="/company/list?sid=1&areacode=HPPLNG"  target="_blank">查看全部保险公司&nbsp;></a></div>
+                      </div>
+                      <!--END合作品牌-->
+                      <!--旅游险-->
+                      <div class="subnav-unfold" style="display:none">
+
+                         <div >
+	                          <h5 class="unfold-tit">出行地区</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/travel/list/is1_st2_acHPPLNG.html" relId="9">境内旅游</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_st1_acHPPLNG.html" relId="10">境外旅游</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_st56_acHPPLNG.html" relId="11">东南亚</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_st57_acHPPLNG.html" relId="35">港澳台</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_st3_acHPPLNG.html" relId="36">申根签证</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_st55_acHPPLNG.html" relId="37">日韩</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_st4_acHPPLNG.html" relId="38">美国/加拿大</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_st5_acHPPLNG.html" relId="39">澳洲/新西兰</a></dd>
+
+	                          </dl>
+                         </div>
+
+                         <div >
+	                          <h5 class="unfold-tit">热门保障</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/travel/list/is1_ss531_acHPPLNG.html" relId="12">航班延误</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_ss534_acHPPLNG.html" relId="13">紧急救援</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_ss533_acHPPLNG.html" relId="14">高风险运动</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_ss536_acHPPLNG.html" relId="15">随身财产损失</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_ss530_acHPPLNG.html" relId="40">本市出行</a></dd>
+
+	                              <dd><a href="/product/travel/list/is1_ss532_acHPPLNG.html" relId="41">自驾游</a></dd>
+
+	                          </dl>
+                         </div>
+
+                          <div class="pa choice-box-wrap">
+                              <h5 class="unfold-tit">精选方案</h5>
+                              <div class="clearfix">
+
+
+
+                                  <div class="choice-box pr">
+
+
+                                      <h5 class="choice-box-tit">安联境外短途旅行保障计划(2017)</h5>
+                                      <p class="choice-box-con">适合东南亚、日韩旅行</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>20</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/travel/detail/ip9019_is1_acHPPLHP.html" relId="9019" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">旅游</span>
+                                  </div>
+
+
+
+
+                                  <div class="choice-box pr ml20">
+
+                                      <h5 class="choice-box-tit">美亚“万国游踪”境外旅行保障-全球无忧计划</h5>
+                                      <p class="choice-box-con">符合申根签证要求</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>150</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/travel/detail/ip9136_is1_acHPPLHP.html" relId="9136" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">旅游</span>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+                      <!--END旅游险-->
+                      <!--意外险-->
+                      <div class="subnav-unfold" style="display: none;">
+
+                         <div >
+	                          <h5 class="unfold-tit">生活意外</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/accid/list/is1_st9_acHPPLNG.html" relId="42">综合意外</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_hs514_acHPPLNG.html" relId="43">意外医疗</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_sc13_acHPPLNG.html" relId="72">少儿意外</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_sc14_acHPPLNG.html" relId="73">成人意外</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_sc15_acHPPLNG.html" relId="74">老年意外</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_hs516_acHPPLNG.html" relId="75">高风险职业</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_hs519_acHPPLNG.html" relId="76">运动意外</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_hs515_acHPPLNG.html" relId="77">猝死保障</a></dd>
+
+	                          </dl>
+                         </div>
+
+                         <div >
+	                          <h5 class="unfold-tit">交通意外</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/accid/list/is1_hs522_acHPPLNG.html" relId="19">航空意外</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_hs524_acHPPLNG.html" relId="20">自驾车保障</a></dd>
+
+	                              <dd><a href="/product/accid/list/is1_hs527_acHPPLNG.html" relId="44">综合交通意外</a></dd>
+
+	                          </dl>
+                         </div>
+
+                          <div class="pa choice-box-wrap">
+                              <h5 class="unfold-tit">精选方案</h5>
+                              <div class="clearfix">
+
+
+                                  <div class="choice-box pr">
+
+
+                                      <h5 class="choice-box-tit">泰康在线住院宝2018必备版（18-49周岁）</h5>
+                                      <p class="choice-box-con">保障全面，提供涵盖一般意外伤害、疾病住院医疗保障</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>249</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/accid/detail/ip10962_is1_acHPPLHP.html" relId="10962" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">意外</span>
+                                  </div>
+
+
+
+                                  <div class="choice-box pr ml20">
+
+                                      <h5 class="choice-box-tit">上海人寿“鲲鹏保”个人意外组合计划经典版</h5>
+                                      <p class="choice-box-con">超低价综合意外险</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>28</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/accid/detail/ip11333_is1_acHPPLHP.html" relId="11333" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">意外</span>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+                      <!--END意外险-->
+                      <!--健康险-->
+                      <div class="subnav-unfold" style="display: none;">
+
+                         <div >
+	                          <h5 class="unfold-tit">选购热点</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/health/list/is1_hs560_acHPPLNG.html" relId="53">百万医疗</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_st11_acHPPLNG.html" relId="78">重大疾病</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_hs554_acHPPLNG.html" relId="54">保费豁免</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_hs552_acHPPLNG.html" relId="55">满期返还</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_hs564_acHPPLNG.html" relId="56">无门槛报销</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_hs565_acHPPLNG.html" relId="58">社保外用药</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_hs555_acHPPLNG.html" relId="59">轻症/原位癌</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_hs562_acHPPLNG.html" relId="79">门诊医疗</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_hs553_acHPPLNG.html" relId="80">确诊即赔</a></dd>
+
+	                          </dl>
+                         </div>
+
+                         <div >
+	                          <h5 class="unfold-tit">保障人群</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/health/list/is1_sc42%3A18%3A1_acHPPLNG.html" relId="21">少儿健康</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_sc43%3A60%3A1_acHPPLNG.html" relId="22">成人健康</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_sc44%3A90%3A1_acHPPLNG.html" relId="51">老年健康</a></dd>
+
+	                              <dd><a href="/product/health/list/is1_sc45%3A0%3A2_acHPPLNG.html" relId="52">女性专属</a></dd>
+
+	                          </dl>
+                         </div>
+
+                          <div class="pa choice-box-wrap">
+                              <h5 class="unfold-tit">精选方案</h5>
+                              <div class="clearfix">
+
+
+                                  <div class="choice-box pr">
+
+
+                                      <h5 class="choice-box-tit">复星联合乐享一生5年期百万医疗保险</h5>
+                                      <p class="choice-box-con">5年期百万医疗险，一次投保，5年呵护</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>180</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/health/detail/ip9850_is1_acHPPLHP.html" relId="9850" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">健康</span>
+                                  </div>
+
+
+
+                                  <div class="choice-box pr ml20">
+
+                                      <h5 class="choice-box-tit">百年康惠保（旗舰版）重大疾病保险</h5>
+                                      <p class="choice-box-con">155种疾病保障，中症、轻症均可多次赔付</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>226.60</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/health/detail/ip11294_is1_acHPPLHP.html" relId="11294" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">健康</span>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <!--END健康险-->
+                      <!--人寿险-->
+                      <div class="subnav-unfold" style="display: none;">
+
+                         <div >
+	                          <h5 class="unfold-tit">保障项目</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/life/list/is1_st37_acHPPLNG.html" relId="25">定期寿险</a></dd>
+
+	                              <dd><a href="/product/life/list/is1_st38_acHPPLNG.html" relId="26">终身寿险</a></dd>
+
+	                              <dd><a href="/product/annuity/list/is1_acHPPLNG_acHPPLNG.html" relId="82">理财储蓄</a></dd>
+
+	                          </dl>
+                         </div>
+
+                         <div >
+	                          <h5 class="unfold-tit">选购热点</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/life/list/is1_hs567_acHPPLNG.html" relId="32">满期返还</a></dd>
+
+	                              <dd><a href="/product/life/list/is1_hs595_acHPPLNG.html" relId="83">终身养老</a></dd>
+
+	                              <dd><a href="/product/life/list/is1_hs569_acHPPLNG.html" relId="86">猝死</a></dd>
+
+	                          </dl>
+                         </div>
+
+                          <div class="pa choice-box-wrap">
+                              <h5 class="unfold-tit">精选方案</h5>
+                              <div class="clearfix">
+
+
+                                  <div class="choice-box pr">
+
+
+                                      <h5 class="choice-box-tit">北京人寿京彩年华定期寿险</h5>
+                                      <p class="choice-box-con">最高150万身价保障，费率低于同类产品，等待期短</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>11</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/life/detail/ip10979_is1_acHPPLHP.html" relId="10979" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">人寿</span>
+                                  </div>
+
+
+
+                                  <div class="choice-box pr ml20">
+
+                                      <h5 class="choice-box-tit">上海人寿小蘑菇定期寿险200万升级版</h5>
+                                      <p class="choice-box-con">低保费高保额，纯保障，女性费率性价比更高</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>512</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/life/detail/ip11208_is1_acHPPLHP.html" relId="11208" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">人寿</span>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <!--END人寿险-->
+                      <!--财产险-->
+                      <div class="subnav-unfold" style="display: none;">
+
+                         <div >
+	                          <h5 class="unfold-tit">保障类型</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/family/list/is1_st40" relId="29">家庭财产</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_st58" relId="60">个人责任</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_st59" relId="61">资金损失</a></dd>
+
+	                              <dd><a href="/chexian/chexianIndex.jsp" relId="243">车辆保险</a></dd>
+
+	                          </dl>
+                         </div>
+
+                         <div >
+	                          <h5 class="unfold-tit">特色保障</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/family/list/is1_hs576" relId="62">水管爆裂</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_hs588" relId="63">手机资金安全</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_hs578" relId="64">室内财产盗抢</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_hs587" relId="65">第三者责任</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_hs580" relId="66">地震/海啸</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_hs586" relId="67">高空坠物</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_hs585" relId="68">宠物责任</a></dd>
+
+	                              <dd><a href="/product/family/list/is1_hs589" relId="69">银行卡资金安全</a></dd>
+
+	                          </dl>
+                         </div>
+
+                          <div class="pa choice-box-wrap" >
+                              <h5 class="unfold-tit">精选方案</h5>
+                              <div class="clearfix">
+
+
+                                  <div class="choice-box pr">
+
+
+                                      <h5 class="choice-box-tit">手机支付资金损失保障计划</h5>
+                                      <p class="choice-box-con">保障手机、PAD上银行账户及第三方支付账户的资金安全</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>3</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/family/detail/ip9278_is1_acHPPLHP.html" relId="9278" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">财产</span>
+                                  </div>
+
+
+
+                                  <div class="choice-box pr ml20">
+
+                                      <h5 class="choice-box-tit">中民家庭财产综合保险A款</h5>
+                                      <p class="choice-box-con">全方位立体保护房屋安全，从此不怕火水雷电</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>100</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/family/detail/ip9337_is1_acHPPLHP.html" relId="9337" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">财产</span>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <!--END财产险-->
+                      <!--团体意外险-->
+                      <div class="subnav-unfold" style="display: none;" >
+
+                         <div >
+	                          <h5 class="unfold-tit">保障项目</h5>
+	                          <dl class="option-alink clearfix">
+
+	                              <dd><a href="/product/enterprise/list/is1_st29_acHPPLNG.html" relId="30"> 团体意外</a></dd>
+
+	                              <dd><a href="/product/enterprise/list/is1_st61_acHPPLNG.html" relId="70">雇主责任</a></dd>
+
+	                              <dd><a href="/product/enterprise/list/is1_st60_acHPPLNG.html" relId="71">工商企业综合</a></dd>
+
+	                          </dl>
+                         </div>
+
+                          <div class="pa choice-box-wrap">
+                              <h5 class="unfold-tit">精选方案</h5>
+                              <div class="clearfix">
+
+
+                                  <div class="choice-box pr">
+
+
+                                      <h5 class="choice-box-tit">都邦安逸团体意外保障计划</h5>
+                                      <p class="choice-box-con">1-6类职业均可投保，价格全面自选，随心搭配，最高可选100万意外伤害保障</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>51</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/enterprise/detail/ip10976_is1_acHPPLHP.html" relId="10976" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">企业</span>
+                                  </div>
+
+
+
+                                  <div class="choice-box pr ml20">
+
+                                      <h5 class="choice-box-tit">中国人寿财险安心保团意险</h5>
+                                      <p class="choice-box-con">可承保高风险职业，价格全面自选，随心搭配，一切为了您的需求而设计</p>
+                                      <p>
+                                          <span class="choice-box-price"><em>¥</em><span>36</span><em>起</em></span>
+                                          <a class="choice-box-alink" target="_blank" href="/enterprise/detail/ip9942_is1_acHPPLHP.html" relId="9942" >查看详情</a>
+                                      </p>
+                                      <span class="tab-box">企业</span>
+                                  </div>
+
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <!--END团体意外险-->
+                  </div>
+                  <!--END分类-->
+              </div>
+              <ul class="menu-box flol clearfix">
+                  <li><a href="/">首页</a></li>
+
+                  <li class="toggle-icon pr zhuanti-li">
+                      <a href="/product/special-2017.jsp?sid=1&areacode=HPNGSS">严选</a>
+                      <img data-original="//images.zhongmin.cn/zhongmin2017/header/images/slide-up.jpg" class="pa slide-icon" style="display: none"/>
+                  </li>
+                  <li><a target="_blank" href="/yuyue/yuyue.jsp?areacode=HPNGCM&id=1">定制</a></li>
+                  <li class="pr"><a target="_blank" href="/user/forwardtozm123">中民积分宝</a><span class="menu-new pa"></span></li>
+                  <li class="pr"><a target="_blank" href="/topics/topics.jsp">健康计划</a><span class="menu-new pa"></span></li>
+                  <li><a target="_blank" href="/redirect.jsp">红酒世界网上商城</a></li>
+                  <li><a target="_blank" href="/claimService/claimService.jsp?sid=1">理赔服务</a></li>
+              </ul>
+          </div>
+           <!--优惠展开框-->
+
+           <!--END优惠展开框-->
+           <!--专题展开框-->
+           <div class="pa favourable-box2" style="display:none;">
+               <div class="auto-layout">
+                   <ul class="favourable clearfix" id="headerTopics">
+
+                      <li><a relId="5" href='/yanxuan/yanxuan.jsp?sid=1&type=7&areacodec=HPNGSS'><img src='//images.zhongmin.cn/images/2018/discountTopic/235-3.png' alt='' width='235' height='120'/><p class='fav-tit' style='width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;'>医疗健康</p></a></li>
+
+                      <li><a relId="15" href='https://www.zhongmin.cn/yanxuan/yanxuan.jsp?sid=1&type=5&areacode=HPSTSE&areacodec=HPNGSS'><img src='https://images.zhongmin.cn/ad_zhongmin/topics/yanxuanlycx235-7.png' alt='' width='235' height='120'/><p class='fav-tit' style='width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;'>旅游出行</p></a></li>
+
+                      <li><a relId="6" href='/yanxuan/yanxuan.jsp?sid=1&type=1&areacodec=HPNGSS'><img src='//images.zhongmin.cn/images/2018/discountTopic/235-2.png' alt='' width='235' height='120'/><p class='fav-tit' style='width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;'>少儿保障</p></a></li>
+
+                      <li><a relId="7" href='/yanxuan/yanxuan.jsp?sid=1&type=6&areacodec=HPNGSS'><img src='//images.zhongmin.cn/images/2018/discountTopic/235-5.png' alt='' width='235' height='120'/><p class='fav-tit' style='width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;'>意外保障</p></a></li>
+
+                       <li>
+                           <a href="/product/special-2017.jsp?sid=1&areacode=HPNGSS">
+                               <div class="all-btn"></div>
+                               <p class="fav-tit">查看全部</p>
+                           </a>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+           <!--专题展开框-->
+    </div>
+    <!--END头部-->
+
+
+
+
+
+
+<!-- 侧边栏-->
+
+<div class="fixed-side-tool" rel="nofollow">
+       <!--侧边导航-->
+       <div class="side-tool-control">
+           <div class="side-tool-function">
+               <div class="service-box">
+                   <a onclick="Detector.floatclick();return false;" href="javascript:void(0);" ref="nofollow">在线客服</a>
+               </div>
+               <div class="gap-box"></div>
+               <div class="pro-contrast pr">
+                   <a href="javascript:void(0)">产品对比<span class="contrast-nums"><span id="comparingSize">0</span><span>/4</span></span></a>
+               </div>
+               <div class="gap-box"></div>
+               <div class="cart-box">
+                   <a href="javascript:void(0)">购物车<span class="pro-nums" id="pro-nums"></span></a>
+               </div>
+               <div class="gap-box"></div>
+           </div>
+           <div class="side-tool-other">
+               <div class="tool-box1 com-tool pr">
+                   <a class=""></a>
+                   <div class="side-hover-title">意见反馈</div>
+                   <img data-original="//images.zhongmin.cn/zhongmin2017/index/images/tool-right-icon2.png" class="com-right-icon pa"/>
+               </div>
+               <div class="tool-box2 com-tool pr">
+                   <a class=""></a>
+                   <div class="QR-box" style="display: none">
+                       <div class="QR-top-box" >
+                           <img src="//images.zhongmin.cn/zhongmin2017/index/images/QR-icon1.png" alt=""/>
+                           <p class="mt6">关注微信优惠抢先看</p>
+                       </div>
+                       <div class="QR-bottom-box">
+                           <img src="//images.zhongmin.cn/zhongmin2017/index/images/QR-icon2.png" alt=""/>
+                           <p class="mt6">下载APP理赔更省心</p>
+                       </div>
+                   </div>
+                   <img data-original="//images.zhongmin.cn/zhongmin2017/index/images/tool-right-icon1.png" class="com-right-icon pa"/>
+               </div>
+               <div class="tool-box3 com-tool pr">
+                   <a href="#"></a>
+                   <div class="side-hover-title">返回顶部</div>
+                   <img data-original="//images.zhongmin.cn/zhongmin2017/index/images/tool-right-icon2.png" class="com-right-icon pa"/>
+               </div>
+           </div>
+       </div>
+       <div class="side-tool-cont-wrap">
+           <!--购物车侧边栏-->
+            <div class="side-tool-cont" id="shoppingCart" style="display:none">
+                <h4 class="pr" id="status">
+                    <!-- <span style="padding-left:65px;">登录后商品将被保存</span>
+                    <span class="back-btn"></span>
+                    <a class="side-login-btn" href="">登录</a> -->
+                </h4>
+                <p class="none-pro" id="emptyCart" style="display:none">您的购物车是空的</p>
+                <div class="product-scroll-wrap">
+                    <!--产品组合-->
+                    <div class="prod-box effectiveProduct" zm-for="items in list" zm-attr="cartId::{items.cartId}">
+                        <h4 class="pr"><i>组合方案</i>
+                        <span class="side-close-btn arrclose" style="top:23px"></span></h4>
+                        <ul class="prod-list zm_hide">
+                            <li zm-for="item in items.list">
+                                <p class="c-333 f12">{item.productName}</p>
+                                <span class="side-close-btn close" zm-attr="iscomplete::{item.isComplete};cid::{item.id}"></span>
+                                <div class="mt14 clearfix">
+                                    <span class="pref-price flol">¥{item.price}</span>
+                                    <div class="pref-box flor" zm-if="{item.preferInfo!=undefined}">
+                                        <span>优惠信息</span>
+                                        <div class="pref-cont pa" style="display: none"><span>{item.preferInfo}</span><span class="tips-icon2 pa"></span></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--失效产品-->
+                    <div class="prod-box" id="uneffectiveProduct">
+                        <div class="lose-pro-tit">
+                            <span class="f12" id="invalidNum"></span>
+                            <span class="flor clear-pro-btn">清除全部失效产品</span>
+                        </div>
+                        <ul class="prod-list clearprod zm_hide" zm-for="items in list">
+                            <li zm-for="item in items.list" class="invalidPro">
+                                <p class="c-333 f12">{item.productName}</p>
+                                <span class="side-close-btn close" zm-attr="iscomplete::{item.isComplete};cid::{item.id}"></span>
+                                <div class="mt14 clearfix">
+                                    <span class="pref-price flol">¥{item.price}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="balance-btn pa" href="/cart/cart.jsp?sid=1">前往购物车结算</a>
+            </div>
+            <!--产品对比-->
+                <div class="side-tool-cont" id="comparingProducts" style="display:none">
+                    <h4 class="pr text-center">
+                        <span>产品对比</span>
+                        <span class="back-btn" onclick="backBtnClick()"></span>
+                    </h4>
+                    <div class="product-scroll-wrap">
+                        <!--产品组合-->
+                        <div class="prod-box" zm-for="item in list">
+                            <ul class="prod-list">
+                                <li>
+                                    <a zm-attr="url::{item.url}" href="javascript:void(0)" onClick="window.open($(this).attr('url'))"><p class="c-333 f12">{item.name}</p></a>
+                                    <span zm-attr="pid::{item.pid};bid::{item.bid}" class="side-close-btn" onClick="deleteOneComparing(this)"></span>
+                                    <div class="mt14 clearfix">
+                                        <span class="pref-price flol">￥</span><span class="pref-price flol">{item.price == "undefined" ? 0 : item.price}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--没产品组合-->
+                        <p class="none-pro" id="emptyCompare" style="display:none">请添加需要对比的产品~</p>
+                    </div>
+                    <div id="addAndClearComparation" class="clear-pro-btn" style="display:none"><span onClick="addNewComparation()">添加产品</span><span class="ml10 mr10">|</span><span onClick="deleteAllComparing()">清空列表</span></div>
+                    <div id="clearComparation" class="clear-pro-btn" style="display:none"><span onClick="deleteAllComparing()">清空列表</span></div>
+
+                    <a id="addComparation" class="balance-btn pa" onClick="addNewComparation()" href="javascript:;">添加产品</a>
+                    <a id="compareDetail" class="balance-btn pa" href="/product/compare/compareDetail.jsp?sid=1" target="_blank">立即对比</a>
+                </div>
+           <!--意见反馈侧边栏-->
+           <div class="side-advice-cont" style="display:none">
+               <h4 class="pr">
+                   <span style="padding-left:112px;">意见反馈</span>
+                   <span class="back-btn" onclick="backBtnClick()"></span>
+               </h4>
+               <div class="advice-cont-wrap">
+                   <p>请选择您反馈的意见类型</p>
+                   <ul class="adv-tit-option clearfix">
+                       <li class="mr10" val="1">建议/需求</li>
+                       <li class="mr10 adv-cur" val="2">遇到问题</li>
+                       <li val="3">其他</li>
+                   </ul>
+                <div class="pr">
+                    <textarea class="text-area" placeholder="请在这里输入你使用本产品时遇到的问题，或改进建议，感谢您对中民保险网的关注与支持"></textarea>
+                    <span class="text-nums pa"><span id="num">0</span><span>/500</span></span>
+                </div>
+                <a class="post-btn" style="cursor:pointer">提交</a>
+               </div>
+           </div>
+       </div>
+   </div>
+   <!-- END侧边栏-->
+
+
+
+
+<div class="clearfix bg-fff mb20" id="headInfo">
+    <div class="com-layout clearfix">
+        <div class="locate flol"><span class="c-333">您现在所在的位置是：</span>
+        <a href="/" target="_blank">首页</a><span>&gt;</span> <a href="/product/life/list/is1.html" target="_blank">人寿保险</a> <span>&gt;</span>
+        <span id="lblNavName" class="zm_hide">{@obj.productName==undefined?"":@obj.productName}</span></div>
+        <div class="flor">
+            <span class="addcompare" bid="26" zm-attr="pid::{@obj.id};productName::{@obj.productName};price::{@obj.minPrice};url::{@obj.url}" onclick="compare(this)">加入对比</span>
+            <span class="collection" data-bool="0">收藏</span>
+
+          <!--   <div class="share-box pr">
+          		    <span>分享</span>
+                <div class="pa share-wrap">
+                    <h3>微信扫一扫分享给好友或朋友圈</h3>
+                    <img src="//images.zhongmin.cn/zhongmin2017/details/images/code-img.jpg" alt=""/>
+                    <img src="//images.zhongmin.cn/zhongmin2017/details/images/share-tit.jpg" alt=""/>
+                    <div class="mb14">
+                      <a class="xl-weibo-btn share-btn" href=""></a>
+                      <a class="qq-weibo-btn share-btn" href=""></a>
+                      <a class="qzone-btn share-btn" href=""></a>
+                      <a class="qq-btn share-btn" href=""></a>
+                    </div>
+                    <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa share-icon"/>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!--选项区-->
+<div class="com-layout clearfix mb40" id = "details"  style="display:none" >
+	<input id="bid" style="display:none" zm-attr="val::{@obj.bid}"/>
+	<input id="pid" style="display:none" zm-attr="val::{@obj.id}"/>
+    <div class="slide-box flol mr30" >
+       <div class="pr product-img-box">
+           <img id="productImg" zm-attr="src::{$zmImgUrl+@obj.id}.jpg" class="ver-ali-middle" alt="图片未加载" />
+           <div class="adv-abstract-box pa">
+	           <span zm-if="{@obj.zmCompanyGroup!=null}">
+	               <a target="_blank"  zm-attr="href::/company/product/list?cid={@obj.zmCompanyGroup.zmCompanyClassId}&sid=1">{@obj.zmCompanyGroup==undefined?"":@obj.zmCompanyGroup.aliasName==undefined?"":@obj.zmCompanyGroup.aliasName}</a>
+               </span>
+               <div class="adv-abstract-con">{@obj.zmCompanyBase==undefined?"":@obj.zmCompanyBase.des==undefined?"":@obj.zmCompanyBase.des}</div>
+           </div>
+       </div>
+        <div class="mt10 adv-box pr flexslider"  style="display: block !important;">
+             <ul id="advertisement" class="clearfix swiper-wrapper slides">
+             </ul>
+             <ul class="pa lb-nav">
+             </ul>
+        </div>
+    </div>
+    <div class="flol right-box pr" >
+        <!--产品名称-->
+        <h1 class="pro-tit" id="productName"  zm-attr="tAddMin::{@obj.tAddMin}">{@obj.productName}</h1>
+        <ul class="detail-ensure-support clearfix">
+           <div zm-if="{@obj.zmProductBySite!=undefined}">
+        		<li zm-if={@obj.zmProductBySite.recomendReason1!=undefined}>{@obj.zmProductBySite.recomendReason1}</li>
+            	<li zm-if={@obj.zmProductBySite.recomendReason2!=undefined}>{@obj.zmProductBySite.recomendReason2}</li>
+             	<li zm-if={@obj.zmProductBySite.recomendReason3!=undefined}>{@obj.zmProductBySite.recomendReason3}</li>
+        	</div>
+        </ul>
+        <p class="detail-ensure-con">{@obj.zmProductBySite.productNameSub==undefined?"":@obj.zmProductBySite.productNameSub}</p>
+        <!--新增模块-->
+	        <div class="pr zm_hide" zm-if="{@obj.zmProductBySite.productLight1 != undefined}">
+	            <div class="pro-advantage-newbox clearfix">
+	                <p zm-if="{@obj.zmProductBySite.productLight1 != undefined}">{@obj.zmProductBySite.productLight1}</p>
+	                <p zm-if="{@obj.zmProductBySite.productLight2 != undefined}">{@obj.zmProductBySite.productLight2}</p>
+	                <p zm-if="{@obj.zmProductBySite.productLight3 != undefined}">{@obj.zmProductBySite.productLight3}</p>
+	                <p zm-if="{@obj.zmProductBySite.productLight4 != undefined}">{@obj.zmProductBySite.productLight4}</p>
+	                <p zm-if="{@obj.zmProductBySite.productLight5 != undefined}">{@obj.zmProductBySite.productLight5}</p>
+	                <p zm-if="{@obj.zmProductBySite.productLight6 != undefined}">{@obj.zmProductBySite.productLight6}</p>
+	            </div>
+	            <!-- <span class="advbox-icon p-up"></span> -->
+	     </div>
+        <div class="option-box-wrap">
+            <dl class="clearfix" zm-if="{@obj.peopleFit!=undefined}">
+                <dt class="ensure-opt-tit flol" >适合人群</dt>
+                <dd class="ensure-opt-content"><span class="com-option option-cur">{@obj.peopleFit}</span></dd>
+            </dl>
+            <dl class="clearfix" id="securityProgram" zm-if="{@obj.zmProductArrList!=undefined&&@obj.zmProductArrList.length>0}">
+                <dt class="ensure-opt-tit flol" >保障计划</dt>
+                <dd class="ensure-opt-content" id = "arr">>
+	                <a class=" zm_hide" zm-for="arr in obj.zmProductArrList" zm-attr="href::/life/detail/ip{arr.productId}_is1{mark==null?'':'_mark'+mark}.html;id::{arr.productId}">
+						<span zm-attr="class::{arr.productId==@obj.id?'com-option option-cur':'com-option'}">{arr.psName==undefined?"":arr.psName}</span>
+					</a>
+                </dd>
+            </dl>
+            <dl class="clearfix">
+                <dt class="ensure-opt-tit flol">投保年龄</dt>
+                <dd class="ensure-opt-content"  id = "age">
+                  <input type="hidden" id = "minDay" zm-attr="value::{@obj.minDay}">
+                  <input type="hidden" id = "minAge" zm-attr="value::{@obj.minAge}">
+                  <input type="hidden" id = "minPriceAge" zm-attr="value::{@initParam.age}">
+                  <input type="hidden" id = "maxAge" zm-attr="value::{@obj.maxAge}">
+                   <input type="hidden" id = "tAddMax" zm-attr="value::{@obj.tAddMax}">
+                  <input type="hidden" id = "tAddMin" zm-attr="value::{@obj.tAddMin}">
+                  <input class="com-input mb20"  zm-attr="value::{getDefaultBirth(@initParam.age)}" onchange="countAge()" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:endDate(),minDate:startDate(),onpicking:countAge})"
+                  id="birthday" type="text"/>
+
+                  <input type="hidden" id = "isEffective" zm-attr="value::{@obj.isEffective==undefined?0:@obj.isEffective}">
+                  <input type="hidden" id = "dayBack" zm-attr="value::{@obj.dayBack==undefined?0:@obj.dayBack}">
+                  <input type="hidden" id = "realAge"  zm-attr="value::{@initParam.age}">
+                  <input type="hidden" id = "jobRisk" zm-attr="value::{@obj.jobRisk}">
+                  <input type="hidden" id = "antiMoneyControl" zm-attr="value::{@obj.antiMoneyControl}">
+                <span>
+                	<span id="selected"></span>
+                	<span class="c-org mr14" id="selectAge"></span>
+                	<span zm-if="{@obj.ageScope!=undefined}">投保年龄为{@obj.ageScope==undefined?"":@obj.ageScope}</span>
+                </span>
+                </dd>
+            </dl>
+            <dl class="clearfix zm_hide">
+                <dt class="ensure-opt-tit flol" >性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</dt>
+                <dd class="ensure-opt-content" id = "male">
+                <span zm-for="mal in obj.maleList" zm-if="{mal==0}" zm-attr="class::{@initParam.male==0?'com-option option-cur':'com-option'}">男</span>
+           		<span zm-for="ma in obj.maleList" zm-if="{ma==1}" zm-attr="class::{@initParam.male==1?'com-option option-cur':'com-option'}">女</span>
+            </dl>
+            <dl class="clearfix zm_hide" zm-if="{@obj.smokeType!=undefined && @obj.smokeType>0}">
+                <dt class="ensure-opt-tit flol lineheigt-50" >是否吸烟</dt>
+                <dd class="ensure-opt-content" id = "smoke">
+                <span class='com-option option-cur' val="1">是</span>
+           		<span  class='com-option' val="2">否</span>
+            </dl>
+            <dl class="clearfix zm_hide" id="social" val="0" style="display:none" >
+                <dt class="ensure-opt-tit flol" >社&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;保</dt>
+                <dd class="ensure-opt-content" >
+	                <span zm-attr="class::{@initParam.social==2?'com-option option-cur':'com-option'}" val="2">有</span>
+	                <span zm-attr="class::{@initParam.social==1?'com-option option-cur':'com-option'}" val="1">无</span>
+                </dd>
+            </dl>
+            <dl class="clearfix" zm-if="{@safeFlag>0}">
+                <dt class="ensure-opt-tit flol" >保障期限</dt>
+                <dd class="ensure-opt-content" id = "safeTime">
+                    <span  zm-for="safeTime in obj.safeTimeList" zm-attr="minAge::{safeTime.minAge};maxAge::{safeTime.maxAge};class::{safeTime.policyTerm==@initParam.policyTerm?safeTime.policyTermType==@initParam.policyTermType?'com-option option-cur':'com-option':'com-option'}">
+                    	<input type="hidden" zm-attr="policyTerm::{safeTime.policyTerm};policyTermType::{safeTime.policyTermType}"/>
+                    		<span>{safeTime.safeStr}</span></span>
+                </dd>
+            </dl>
+             <dl class="clearfix" zm-if="{@obj.jobShow>0}">
+                <dt class="ensure-opt-tit flol">承保职业</dt>
+                <dd class="ensure-opt-content">
+                	<span class="ensure-job zm_hide">
+                		<a style="color:#1369c0" zm-for="file in obj.zmProductDocument" zm-if="{file.type==1 && @obj.jobShow==1}" zm-attr="href:://baodan.zhongmin.cn/job/regular/{file.fileName}" target="_blank">{@obj.jobLevelTip}</a>
+                		<p zm-if="{@obj.jobShow==2}">{@obj.jobLevelTip}</p>
+                	</span>
+                </dd>
+            </dl>
+            <dl class="clearfix" zm-if="{@payFlag>0}" >
+                <dt class="ensure-opt-tit flol zm_hide" >缴费期限</dt>
+                <dd class="ensure-opt-content zm_hide" id = "payTime">
+                    <span  zm-for="pay in obj.payTimeList" zm-attr="minAge::{pay.minAge};maxAge::{pay.maxAge}" class="com-option">
+                    <input type="hidden" id="periods" zm-attr="periods::{pay.periods};periodType::{pay.periodType}"/>
+                    	<span id="periodType">{pay.payStr}</span></span>
+                </dd>
+            </dl>
+            <dl class="clearfix" zm-if="{@obj.sellType==0 && @obj.priceInterface=='LongPremium'}">
+                <dt class="ensure-opt-tit flol" id="policyNumber">购买份数</dt>
+                <dd class="ensure-opt-content mb20">
+                    <span class="button-remove" onclick="addPolicyNum(1)"></span>
+                    <input type="tel" class="nums-input" value="1" onkeyup="changePolicyNum()"/>
+                    <span class="button-add" onclick="addPolicyNum(0)"></span>
+                </dd>
+            </dl>
+            <dl class="clearfix" zm-if="{@obj.priceInterface=='LongPremium'}">
+                <dt class="ensure-opt-tit flol">基本保额</dt>
+                <dd class="ensure-opt-content"><span class="c-org" id="baseAmount" zm-attr="code::{@obj.safeObj.safeCodeZm};comCode::{@obj.safeObj.safeCodeIns}"></span></dd>
+            </dl>
+            <dl class="clearfix" zm-if="{@obj.priceInterface=='LongPremium' && @obj.ageScroll>0}">
+                <dt class="ensure-opt-tit flol">保额演算</dt>
+                <dd class="ensure-opt-content">
+                    <div class="scrollbar">
+                            <div class="drag-box"></div>
+                            <div class="drag-rate"></div>
+                    </div>
+                    <p class="drag-con">
+                       <em> 演算年龄</em><span id="calAge">周岁</span>
+                    </p>
+                    <p class="drag-con">
+                    	<em>保额</em><span id="calBaoe" rate="1"></span>
+                    </p>
+                </dd>
+            </dl>
+            <dl class="clearfix" zm-if="{@insureFlag>0}" >
+                <dt class="ensure-opt-tit flol pr" >
+                	<span zm-if="{@obj.relationWithPolicyTerm!=1}">保障额度</span>
+                	<span zm-if="{@obj.relationWithPolicyTerm==1}">基本保额</span>
+                	<!--提示框-->
+                   	<span zm-for="insureInfo in obj.insuredList" class="tbrxm-tips pa" zm-if="{insureInfo.isMainSafe!=undefined && insureInfo.isMainSafe == 1&&insureInfo.safeDescription!=undefined && insureInfo.safeDescription!=''}">
+                        <span class="pa tbrxm-tips-box" style="display: none">
+                            <!-- <span>{insureInfo.safeDescription}</span> -->
+                            <span>为避免收入中断产生的问题，建议投保保额覆盖房贷等债务后，剩余保额还可以支撑赡养老人和小孩教育等，通常为本人年收入的5-10倍。</span>
+                            <i class="pa tbrxm-tips-icon"></i>
+                        </span>
+                    </span>
+                </dt>
+                <dd class="ensure-opt-content" >
+	                <span zm-for="insure in obj.insuredList" >
+	                	<span zm-if="{insure.isMainSafe!=undefined && insure.isMainSafe == 1}" id = "insured">
+	                    	<span zm-for="price in insure.listCoverage" zm-if="{price.coverage != undefined}" class="com-option" zm-attr="minAge::{price.minAge};maxAge::{price.maxAge};safeCode::{insure.safeCodeZm};safeid::{insure.id}">
+	                    		<span zm-if="{@obj.relationWithPolicyTerm==undefined||@obj.relationWithPolicyTerm!=1}" zm-attr="coverage::{price.coverage}">{price.coverageText}</span>
+	                    		<span zm-if="{@obj.relationWithPolicyTerm!=undefined&&@obj.relationWithPolicyTerm==1}" zm-attr="coverage::{price.coverage};firstCoverage::{price.coverage*@obj.policyTerm}">{price.coverageText}</span>
+	                    	</span>
+	               		</span>
+                	</span>
+                </dd>
+            </dl>
+            <dl class="clearfix" id="firstBaoe" zm-if="{@obj.relationWithPolicyTerm!=undefined&&@obj.relationWithPolicyTerm==1}" >
+                <dt class="ensure-opt-tit flol pr" ><span>首年保额</span>
+                	<!--提示框-->
+                   	<span class="tbrxm-tips pa">
+                        <span class="pa tbrxm-tips-box" style="display: none">
+                            <!-- <span>{insureInfo.safeDescription}</span> -->
+                            <span>首年保额=基本保额*保障期限（年），该产品为减额定期寿险，每年保险额度为基本保额*剩余保障期限（年）。</span>
+                            <i class="pa tbrxm-tips-icon"></i>
+                        </span>
+                    </span>
+                </dt>
+                <dd class="ensure-opt-content" style="height:48px">
+               		<span>首年保额为 “基本保额*保障期限”</span>
+                </dd>
+            </dl>
+            <dl class="clearfix" id="address" style="display:none"  >
+             	<span style="dispaly:none" id="cityList"></span>
+                <dt class="ensure-opt-tit flol pr zm_hide">投保地区</dt>
+                <dd class="ensure-opt-content">
+                    <div class=" pr selectFold">
+                        <div><span class="selected-val"></span><i class="date-count-icon ml10 mt16"></i></div>
+                        <ul class="select-list" style="display: none" id="province">
+                        </ul>
+                    </div>
+                    <div class="pr selectFold">
+                        <div><span class="selected-val"></span><i class="date-count-icon ml10 mt16"></i></div>
+                        <ul class="select-list" style="display: none" id="city">
+                        </ul>
+                    </div>
+                     <!-- <span>请选择投保地区</span> -->
+                </dd>
+            </dl>
+            <dl class="clearfix zm_hide" id="shebao" zm-if="{@obj.shebaoLimitBaoe==1}" >
+                <dt class="ensure-opt-tit flol" >是否有社保</dt>
+                <dd class="ensure-opt-content" >
+	                <span class="com-option nocalculate" val="1">有社保</span>
+	                <span class="com-option nocalculate option-cur" val="0">无社保</span>
+                </dd>
+            </dl>
+            <!-- <dl class="clearfix" id="shebaoAddress" zm-if="{@obj.shebaoLimitBaoe==1}" style="display:none"  >
+             	<span style="dispaly:none" id="cityList"></span>
+                <dt class="ensure-opt-tit flol pr zm_hide">社保所在地</dt>
+                <dd class="ensure-opt-content">
+                    <div class=" pr selectFold">
+                        <div><span class="selected-val"></span><i class="date-count-icon ml10 mt16"></i></div>
+                        <ul class="select-list" style="display: none" id="shebaoProvince">
+                        </ul>
+                    </div>
+                    <div class="pr selectFold">
+                        <div><span class="selected-val"></span><i class="date-count-icon ml10 mt16"></i></div>
+                        <ul class="select-list" style="display: none" id="shebaoCity">
+                        </ul>
+                    </div>
+                     <span>请选择投保地区</span>
+                </dd>
+            </dl> -->
+            <div id = "group"  >
+	            <div zm-if="{@obj.addRisk!=undefined}">
+		            <dl class="clearfix zm_hide riskDl"  zm-for="addPro in obj.addRisk" style="display:none" zm-attr="pid::{addPro.productId};extraId::{addPro.extraRelyPid};isRiskSelf::{addPro.isRiskSelf};relation::{addPro.relationPeople}">
+		                <dt class="ensure-opt-tit flol pr"><span class="riskName">{addPro.subName==undefined?"":addPro.subName}</span>
+		                  <!--提示框-->
+		                    <span zm-if="{addPro.description!=undefined && addPro.description!=''}" class="tbrxm-tips pa">
+		                        <span class="pa tbrxm-tips-box" style="display: none">
+		                            <span>{addPro.description}</span>
+		                            <i class="pa tbrxm-tips-icon"></i>
+		                        </span>
+		                    </span>
+		                </dt>
+	                	<dd class="ensure-opt-content" >
+		                	<span zm-if="{addPro.safeGuardList!=undefined}">
+		                		<span zm-for="addProSafe in addPro.safeGuardList">
+		                			<span zm-if="{addProSafe.listCoverage!=undefined && addProSafe.listCoverage!=undefined && addProSafe.listCoverage.length>1}" zm-attr="relation::{addPro.relationPeople};minPriceAge::{addPro.minPriceAge};minAge::{addPro.minAge};maxAge::{addPro.maxAge};subMinAge::{addPro.subMinAge};subMaxAge::{addPro.subMaxAge};policyTerm::{addPro.policyTerm};policyTermType::{addPro.policyTermType};
+		                			pid::{addPro.productId};periods::{addPro.periods};periodType::{addPro.periodType};sellType::{addPro.sellType};only::{addPro.onlyMainRiskChoise};isRiskSelf::{addPro.isRiskSelf}" class="showAdd">
+		                				<span zm-for="addProSafeCov in addProSafe.listCoverage" >
+	            						    <span zm-if="{addProSafeCov.coverage==0}"  class="com-option option-cur" zm-attr="minAge::{addProSafeCov.minAge};maxAge::{addProSafeCov.maxAge};code::{addProSafe.safeCodeZm};val::{addProSafeCov.coverage};id::{addPro.productId};extraId::{addPro.extraRelyPid};comCode::{addProSafe.safeCodeIns};insurePropor::{addProSafe.insurePropor};typeStr::{addPro.priceInterface};priceType::{addPro.priceType}">不投保</span>
+	                						<span zm-if="{addProSafeCov.coverage==1}" class="com-option" zm-attr="minAge::{addProSafeCov.minAge};maxAge::{addProSafeCov.maxAge};code::{addProSafe.safeCodeZm};val::{addProSafeCov.coverage};id::{addPro.productId};extraId::{addPro.extraRelyPid};comCode::{addProSafe.safeCodeIns};insurePropor::{addProSafe.insurePropor};typeStr::{addPro.priceInterface};priceType::{addPro.priceType}">投保</span>
+	                						<span zm-if="{addProSafeCov.coverage>1}" class="com-option" zm-attr="minAge::{addProSafeCov.minAge};maxAge::{addProSafeCov.maxAge};code::{addProSafe.safeCodeZm};val::{addProSafeCov.coverage};id::{addPro.productId};extraId::{addPro.extraRelyPid};comCode::{addProSafe.safeCodeIns};insurePropor::{addProSafe.insurePropor};typeStr::{addPro.priceInterface};priceType::{addPro.priceType}">{addProSafeCov.coverageText}</span>
+		                				</span>
+		                			</span>
+		                			<span zm-if="{addProSafe.isMainSafe == 1 && addProSafe.listCoverage!=undefined && addProSafe.listCoverage.length==1}" zm-attr="relation::{addPro.relationPeople};minPriceAge::{addPro.minPriceAge};minAge::{addPro.minAge};maxAge::{addPro.maxAge};subMinAge::{addPro.subMinAge};subMaxAge::{addPro.subMaxAge};policyTerm::{addPro.policyTerm};
+		                			policyTermType::{addPro.policyTermType};pid::{addPro.productId};periods::{addPro.periods};periodType::{addPro.periodType};sellType::{addPro.sellType};only::{addPro.onlyMainRiskChoise};isRiskSelf::{addPro.isRiskSelf}" class="showAdd">
+		                				<span zm-for="addProSafeCov in addProSafe.listCoverage" >
+	                						<span  class="com-option option-cur" zm-attr="minAge::{addProSafeCov.minAge};maxAge::{addProSafeCov.maxAge};code::{addProSafe.safeCodeZm};val::{addProSafeCov.coverage};id::{addPro.productId};extraId::{addPro.extraRelyPid};comCode::{addProSafe.safeCodeIns};insurePropor::{addProSafe.insurePropor};typeStr::{addPro.priceInterface};priceType::{addPro.priceType}">{addProSafeCov.coverageText}</span>
+		                				</span>
+		                			</span>
+		                		</span>
+		                	</span>
+	              	  	</dd>
+		            </dl>
+		           <!-- 附加险投保内容 -->
+		            <div id="addRisk" style="display: none;" >
+			             <dl class="clearfix" zm-for="adds in obj.addRisk">
+				                <dt class="ensure-opt-tit flol" zm-if="{adds.relationPeople==0&&adds.priceFactorAge==2}">投保人年龄</dt>
+				                <dd class="ensure-opt-content" zm-if="{adds.relationPeople==0&&adds.priceFactorAge==2}">
+				                	<input type="hidden" id = "minDay2" zm-attr="value::{adds.minDay}" />
+				                    <input type="hidden" id = "minAge2" zm-attr="value::{adds.subMinAge}" />
+							        <input type="hidden" id = "maxAge2" zm-attr="value::{adds.subMaxAge}"/>
+					                <input class="com-input mb20" onClick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:AddEndDate(),minDate:AddStartDate(),onpicking:countAge2})"  onchange="countAge2()" id="startTime" type="text"/>
+					                <span><span id="selectAge2" class="c-org">默认投保人年龄为{adds.minAge}周岁</span></span>
+						            <input type="hidden" id = "realAge2"/>
+				                </dd>
+					            <dl class="clearfix" id="addMale" zm-if="{adds.relationPeople==0&&adds.priFactorSex==1}">
+					                <dt class="ensure-opt-tit flol">投保人性别</dt>
+					                <dd class="ensure-opt-content"><span class="com-option option-cur" val="0">男</span><span class="com-option" val="1">女</span></dd>
+					            </dl>
+					           	 <input type="hidden" name= "riskId" zm-attr="value::{adds.productId}"/>
+			            </dl>
+		          </div>
+	          </div>
+	          <div>
+	            <dl class="clearfix" zm-if="{@obj.extraList!=undefined}">
+	                <dt class="ensure-opt-tit flol">组合推荐</dt>
+	                <dd class="ensure-opt-content" zm-for="gitem in obj.extraList">
+	                     <div class="spe-option"  zm-attr="priceInterface::{gitem.priceInterface};pid::{gitem.id};productId::{gitem.productId};productName::{gitem.productName};
+	                    policyterm::{gitem.policyTerm};policytermtype::{gitem.policyTermType};policytermtext::{gitem.titleSeo};minAge::{gitem.minAge};periods::{gitem.periods};periodType::{gitem.periodType}"id="groupPrice" zm-bind="onclick::groupClick({gitem.bid},{gitem.productId})">
+	                       <p>{gitem.subName}</p>
+	                        <p class="c-org" zm-attr="id::{gitem.productId}"></p>
+	                    </div>
+	                    <!--医疗补充弹框-->
+		                    <div class="supplement-box pr" style="display: none">
+		                    	<div zm-if="{gitem.site!=undefined}">
+		                    		<img  zm-attr="src::{$zmImgUrl+gitem.productId}.jpg" class="flol supplement-pro-img"/>
+		                    	</div>
+		                        <div class="supplement-con">
+		                            <h3 class="mt6 mb6">{gitem.productName}</h3>
+		                            <p class="c-666" >{gitem.site.productNameSub==undefiend?"":gitem.site.productNameSub}<a class="supplement-link" id="groupProUrl" target="_blank">查看详情 >></a></p>
+		                            <ul class="supplement-item clearfix">
+		                                <li zm-for="saf in gitem.safeGuardList">{saf.safeName}</li>
+		                            </ul>
+		                        </div>
+		                        <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon8.png" class="pa supplement-icon"/>
+		                    </div>
+	                </dd>
+	            </dl>
+	            </div>
+            </div>
+            <dl class="clearfix mt20" style="display: none;" id="infoJF">
+					<dt class="ensure-opt-tit flol">中民积分</dt>
+					<dd class="ensure-opt-content">
+							<span>您现有中民积分</span>
+							<span style="color:#FE902E;" id="amountJF">0</span>
+							<span>， 通过</span>
+							<a href="//www.zm123.com/"><span style="color:#0000FF;">中民积分宝</span></a>
+							<span>网购，可获更多中民积分</span>
+					</dd>
+			</dl>
+            <dl class="clarfix">
+            	<dt class="ensure-opt-tit flol" zm-if="{@obj.maxBuyNumner!=undefined && @obj.sellType!=undefined && @obj.sellType !=1}">可购份数</dt>
+	             <dd class="ensure-opt-content" zm-if="{@obj.maxBuyNumner!=undefined && @obj.sellType!=undefined && @obj.sellType !=1}">
+	                	<span class="ensure-job c-666">{@obj.maxBuyNumner}</span><span>份</span>
+	                </dd>
+                <dt class="ensure-opt-tit flol lineheigt-50" >保   费</dt>
+                <span id="commissionRate"></span>
+	            <span id="commissionPrice"></span>
+                <input style="display:none" id="minPrice" zm-attr="val::{@obj.minPrice}">
+                <input style="display:none" id="mainPrice">
+                <input style="display:none" id="spePrice">
+                <input type="hidden" id="priceParameter">
+                <dd class="ensure-opt-content zm_hide">
+               		<div id="conventional">
+		                <span class="pro-price c-org">
+			                <b>¥ </b>
+			                <span zm-if="{@obj.priceInterface=='LongPremium'}" id="price" zm-attr="isSpecial::{@obj.isSpecial}">{@obj.basePrice}</span>
+			                <span zm-if="{@obj.priceInterface!='LongPremium'}" id="price" zm-attr="isSpecial::{@obj.isSpecial}"></span>
+			                <span>元</span>
+		                </span>
+ 						<span class="pro-out-price c-666" zm-if="{@obj.isSpecial==1 && @obj.priceInterface=='LongPremium'}"><span>¥</span><span id="orgbaoMoney2">{@obj.basePrice}</span></span>
+		                <span class="pro-out-price c-666" zm-if="{@obj.isSpecial==1 && @obj.priceInterface!='LongPremium'}"><span>¥</span><span id="orgbaoMoney2"></span></span>
+		                <span class="ml20">
+		                	<span>已售</span>
+		                	<span>{@obj.zmProductBySite.sellAmount}</span>
+		                	<span>份  l  好评</span>
+		                	<span class="rate">100</span>
+		               	    <span>%</span>
+		               	</span>
+	               	</div>
+	               	<!--新增模块-->
+	                    <div class="pro-new-price mt20" zm-if="{@obj.zmProductBySite.preferInfo !=undefined}"><!-- zm-if="{@BaseDetailsPageInfo.isSpecial==1}" -->
+	                        <div class="count-down-box clearfix" style="display:none">
+	                            <div class="flol">
+									<span class="pro-price c-yel" zm-if="{@obj.priceInterface=='LongPremium'}"><span>¥</span><span id="prePrice"></span></span>
+	                                <span class="pro-price c-yel" zm-if="{@obj.priceInterface!='LongPremium'}"> <span>¥</span><span id="prePrice"></span></span>
+	                                <span class="pro-out-price" zm-if="{@obj.isSpecial==1 && @obj.priceInterface=='LongPremium'}"><span>¥</span><span id="orgbaoMoney1"></span></span>
+	                                <span class="pro-out-price" zm-if="{@obj.isSpecial==1 && @obj.priceInterface!='LongPremium'}"><span>¥</span><span id="orgbaoMoney1"></span></span>
+	                                <span class="pro-nums">
+		                                <span>已售</span>
+		                                <span>{@obj.zmProductBySite.sellAmount}</span>
+		                                <span>份  l  好评</span>
+		                                <span class="rate">100</span>
+		                                <span>%</span>
+		                            </span>
+	                            </div>
+	                            <div class="flor coutdown">
+	                                 <p>
+	                                 	 <span>还剩：</span>
+		                                 <span id="time_d">00</span><span>天</span>
+		                                 <sapn id="time_h">00</sapn><span>小时</span>
+		                                 <sapn id="time_m">00</sapn><span>分</span>
+		                                 <sapn id="time_s">00</sapn><span>秒</span>
+	                                 </p>
+
+	                            </div>
+	                        </div>
+	                        <div class="gift-box">
+
+	                        </div>
+	                    </div>
+                </dd>
+            </dl>
+            <dl class="clearfix mt20 pr zm_hide"  style="margin-bottom: 40px">
+                <dt class="ensure-opt-tit flol"></dt>
+                <dd class="ensure-opt-content" zm-if="{@obj.isDelete==0 && @obj.zmProductBySite.isOn==1}">
+                    <span class="purchase-btn" onclick="buyClick()">立即购买</span>
+                    <span class="add-btn" onclick="add_product_cart()" id="addCartButton" >加入购物车</span>
+                    <a class="supplement-link ml20" zm-if="{@obj.isYuyue!=undefined && @obj.isYuyue==1}" href="">预约咨询</a>
+                </dd>
+                <dd class="ensure-opt-content" zm-if="{@obj.isDelete==1 || @obj.zmProductBySite.isOn==0}">
+                    <span  class="purchase-btn"  style="background-color: #ccc;">产品已下架</span>
+                </dd>
+               <!--  <div class="pa pro-tips-box" zm-if="{@obj.zmProductBySite!=undefined && @obj.zmProductBySite.preferInfo!=undefined}">
+                    <ul id="preferInfo">
+                        <li>{@obj.zmProductBySite.preferInfo==undefined?"":@obj.zmProductBySite.preferInfo}</li>
+                    </ul>
+                </div> -->
+            </dl>
+
+        </div>
+    </div>
+      <form style="display:none" id="selectProductInfo" name="orderParameter" method="post" zm-attr="action::/order/covertable.jsp?pid={@obj.id}&bid={@obj.bid}&sid=1">
+		     <input name="pid" type="text" zm-attr="value::{@obj.id}"/>
+		     <input name="bid" type="text" zm-attr="value::{@obj.bid}"/>
+		     <input name="sid" type="text" zm-attr="value::{@obj.zmProductBySite.siteId}" />
+		     <input  type="hidden" name="productListJson" />
+	</form>
+</div>
+<!--END选项区-->
+<!--导航栏-->
+<div id="navPostion"></div>
+<div id="hideBeforeRefreshComplete" style="display:none">
+<div class="nav-wrap clearfix">
+	<div  class="com-layout clearfix">
+	    <div class="flor nav-price-wrap" id="navigation">
+	        <span class="nav-price-box">¥ <span id = "price2"></span></span>
+	        <a class="nav-purchase-btn" zm-if="{@obj.isDelete==0 && @obj.zmProductBySite.isOn==1}" style="cursor:pointer" id="buy2" onclick="buyClick()">立即购买</a>
+	    </div>
+	    <ul class="pro-detail-nav clearfix">
+	        <li class="pro-detail-nav-cur" id="tab1" onclick="showComments()">产品详情</li>
+	        <li id="tab2" onclick="hideComments()">投保示例</li>
+	        <li id="tab3" onclick="hideComments()">常见问题</li>
+	        <li id="tab4" onclick="hideComments()">理赔指引</li>
+	        <li class="comment-col" id="tab5" onclick="showComments()">用户评论</li>
+	    </ul>
+	</div>
+</div>
+<div class="com-layout clearfix">
+	<div id="proInfoImg">
+ 		<img  zm-if="{@obj.zmProductBySite.proinForImg1!=undefined}" zm-attr="src::{@obj.zmProductBySite.proinForImg1}"  class="mt40 " style="display:block;width:900px;margin:0 auto;">
+ 	</div>
+    <div class="take-place" style="height:47px;display: none" ></div>
+    <!--产品详情-->
+    <div class="section2 clearfix" >
+        <div id = "characteristic" zm-if="{@obj.zmProductBySite!=undefined}"  >
+            <h3 class="sec1-tit1"><img src="//images.zhongmin.cn/zhongmin2017/details/images/pro-list-icon1.png" class="mr20 ver-ali-middle"/><span class="ver-ali-middle">产品亮点</span></h3>
+            <ul class="ld-box mt20" zm-if="{@obj.zmProductBySite.characteristic!=undefined}">
+            		{@obj.zmProductBySite.characteristic==undefined?"":@obj.zmProductBySite.characteristic}
+            </ul>
+        </div>
+        <!--保障内容-->
+        <div id="safeGuard">
+            <h3 class="sec1-tit1"><img src="//images.zhongmin.cn/zhongmin2017/details/images/pro-list-icon2.png" class="mr20 ver-ali-middle"/><span class="ver-ali-middle">保障内容</span></h3>
+             <div >
+	             <table class="ensure-table">
+	                <tr zm-for="safeItem in list" zm-attr="pid::{safeItem.productId}">
+		                    <td class="td1" zm-if="{safeItem.isShow==1}">{safeItem.safeName}</td>
+		                    <td class="td2" zm-if="{safeItem.isShow==1&&safeItem.isChoise==0}" zm-attr="id::{safeItem.isChoise};safe::{safeItem.id};comCode::{safeItem.safeCodeIns}">{safeItem.safeInsuredText==undefined?"":safeItem.safeInsuredText}</td>
+		                    <td class="td2"  zm-if="{safeItem.isShow==1&&safeItem.isChoise==1}" zm-attr="insurepropor::{safeItem.insurePropor};rateType::{safeItem.insureProporType};id::{safeItem.isChoise};safe::{safeItem.id};comCode::{safeItem.safeCodeIns}">
+	                    	 	<div class="select-box pr" zm-if="{safeItem.listCoverage!=undefined&&safeItem.listCoverage.length>1}" >
+					        	 	<span zm-if="{safeItem.isMainSafe==1}" zm-attr="class::selected-span {safeItem.id};id::{@safeCode};val::{@insure}">{@insureText}</span>
+					        	 	<span zm-if="{safeItem.isMainSafe==0}" zm-attr="class::selected-span {safeItem.id};id::{safeItem.safeCodeZm};val::{safeItem.sumInsured}">{safeItem.safeInsuredText}</span>
+					        	 	<i class="date-count-icon  ml14" ></i>
+	                           			 <ul class="pa select-list-box" style="display: none">
+	                               			 <li zm-for="money in safeItem.listCoverage" zm-attr="class::{safeItem.id};minAge::{money.minAge};maxAge::{money.maxAge}">
+	                               			 	<span zm-attr="id::{safeItem.safeCodeZm};class::{money.coverage};baoeid::{money.id}">{money.coverageText}</span>
+	                               			 </li>
+	                            		</ul>
+	                        	</div>
+	                        	<div class="select-box pr" zm-if="{safeItem.listCoverage!=undefined&&safeItem.listCoverage.length&lt;=1}" >
+					        	<span style="width:130px" zm-attr="class::selected-span {safeItem.id};id::{@safeCode};val::{safeItem.sumInsured};comCode::{safeItem.safeCodeIns}">{safeItem.safeInsuredText}</span>
+	                        </div>
+	                   	  </td>
+	                   	  <td class="td2" zm-if="{safeItem.isShow==1&&safeItem.isChoise==2}" zm-attr="id::{safeItem.isChoise};safe::{safeItem.id};comCode::{safeItem.safeCodeIns}">
+	                   	 	  <span zm-for="eachBaoe in safeItem.listCoverage" zm-if="{safeItem.defaultBaoeId==eachBaoe.assocseq}" zm-attr="assocseq::{eachBaoe.assocseq}" >{eachBaoe.coverageText==undefined?"":eachBaoe.coverageText}</span>
+	                   		  <span zm-for="eachBaoe in safeItem.listCoverage" zm-if="{safeItem.defaultBaoeId!=eachBaoe.assocseq}" zm-attr="assocseq::{eachBaoe.assocseq}" style="display:none" >{eachBaoe.coverageText==undefined?"":eachBaoe.coverageText}</span>
+	                   	  </td>
+	                      <td class="td2" zm-if="{safeItem.isShow==1&&safeItem.isChoise==3}" zm-attr="id::{safeItem.isChoise};insurepropor::{safeItem.insurePropor};safe::{safeItem.id};comCode::{safeItem.safeCodeIns};extraStr::{safeItem.insureProporExtra==undefined?'':safeItem.insureProporExtra}">{safeItem.sumInsured}{safeItem.insureProporExtra==undefined?'':safeItem.insureProporExtra}</td>
+		                  <td class="td2" zm-if="{safeItem.isShow==1&&safeItem.isChoise==4}" zm-attr="id::{safeItem.isChoise};insurepropor::{safeItem.insurePropor};safe::{safeItem.id};comCode::{safeItem.safeCodeIns};textMode::{safeItem.safeInsuredTextShowType}">
+		                  	  <span zm-attr="class::selected-span {safeItem.id};id::{safeItem.safeCodeZm};val::{safeItem.sumInsured}">{safeItem.safeInsuredText}</span>
+		                  </td>
+		                  <td class="td3" zm-if="{safeItem.isShow==1}">{safeItem.safeDescription==undefined?"":safeItem.safeDescription}</td>
+	                </tr>
+	                 <tr zm-for="addSafe in addList" zm-if="{addSafe.sumInsured!=undefined && addSafe.listCoverage.length ==1 &&　addSafe.sumInsured>=1}" zm-attr="pid::{addSafe.productId};insureProporExtra::{addSafe.insureProporExtra};insurePropor::{addSafe.insurePropor};sellType::{addSafe.sellType};isChoise::{addSafe.isChoise};code::{addSafe.safeCodeZm}" type="1">
+		                  <td class="td1" zm-if="{addSafe.isShow==1}">{addSafe.safeName==undefined?"":addSafe.safeName}</td>
+	                      <td class="td2" zm-if="{addSafe.isShow==1}">{addSafe.safeInsuredText==undefined?"":addSafe.safeInsuredText}</td>
+		                  <td class="td3" zm-if="{addSafe.isShow==1}">{addSafe.safeDescription==undefined?"":addSafe.safeDescription}</td>
+	                </tr>
+	                <tr zm-for="addSafe in addList" zm-if="{addSafe.listCoverage.length!=1 || addSafe.sumInsured==0}" zm-attr="pid::{addSafe.productId};insureProporExtra::{addSafe.insureProporExtra};insurePropor::{addSafe.insurePropor};sellType::{addSafe.sellType};isChoise::{addSafe.isChoise};code::{addSafe.safeCodeZm}" type="1">
+		                  <td class="td1" zm-if="{addSafe.isShow==1}">{addSafe.safeName==undefined?"":addSafe.safeName}</td>
+	                      <td class="td2" zm-if="{addSafe.isShow==1}" zm-attr="text::{addSafe.safeInsuredText}">未选</td>
+		                  <td class="td3" zm-if="{addSafe.isShow==1}">{addSafe.safeDescription==undefined?"":addSafe.safeDescription}</td>
+	                </tr>
+	            </table>
+            </div>
+            <div class="tb-link-box">
+                <span class="tb-link-box-tit">投保前请您仔细阅读：</span>
+                <a class="a-link1 a-link" target="_blank" zm-attr="href::/product/file/clauseList.jsp?pid={@id}&sid=1">产品条款及除外责任</a>
+             	<span zm-if="{@fileList!=undefined&&@fileList.length>0}">
+             		<span zm-for="files in fileList">
+             			<span zm-if="{files.type!=undefined&&files.type==1}">
+             				<a class="a-link2 a-link" target="_blank" zm-attr="href:://baodan.zhongmin.cn/job/regular/{files.fileName}">职业分类表</a>
+             			</span>
+             		</span>
+             	</span>
+                <a class="a-link2 a-link" target="_blank" href="//baodan.zhongmin.cn/clause/ClientNotification_zm.pdf">客户告知书</a>
+                <a class="a-link2 a-link" target="_blank" zm-attr="href:://baodan.zhongmin.cn/rate2018/regular/regular_{@id}_5.pdf" >产品费率表</a>
+                <a class="a-link3 a-link" target="_blank" zm-attr="href:://baodan.zhongmin.cn/example2018/regular/policy_{@id}.jpg">保单样本</a>
+            </div>
+        </div>
+        <!--投保须知-->
+        <div id = "prompt" zm-if="{@obj.zmProductBySite!= undefined}" >
+            <h3 class="sec1-tit1"><img src="//images.zhongmin.cn/zhongmin2017/details/images/pro-list-icon3.png" class="mr20 ver-ali-middle"/><span class="ver-ali-middle">投保须知</span></h3>
+            <div zm-if="{@obj.zmInsureTypeNoticeList == ''}">
+           		<ul class="tbxz-box" zm-if="{@obj.zmProductBySite.prompt != undefined}">
+           			{@obj.zmProductBySite.prompt}
+           		</ul>
+           	</div>
+            <div zm-if="{@obj.zmInsureTypeNoticeList != undefined}">
+           		<ul class="tbxz-box">
+           			<li zm-for="item in obj.zmInsureTypeNoticeList"><span class="gab-tit">{item.typeName} : </span><span>{item.insureNotice}</span></li>
+	            </ul>
+           	</div>
+        </div>
+        <!--报案指引-->
+        <div id="claimsGuide1">
+            <h3 class="sec1-tit1"><img src="//images.zhongmin.cn/zhongmin2017/details/images/pro-list-icon4.png" class="mr20 ver-ali-middle"/><span class="ver-ali-middle">理赔指引</span></h3>
+            <img src="//images.zhongmin.cn/zhongmin2017/details/images/bazy-img.jpg" class="ver-ali-middle"/>
+            <div class="pad-box">
+                 <ul class="bazy-flow-box clearfix">
+                     <li class="pr">
+                       	 <span>保险事故发生后，请第一时间拨打中民报案电话：400-8822-300或进入中民APP、微信公众号-理赔进行报案。</span>
+                         <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa flow-icon"/>
+                     </li>
+                     <li class="pr">
+                        <span>报案成功后，我们会将理赔所需的材料及理赔相关注意事项发送至您邮箱。</span>
+                         <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa flow-icon"/>
+                     </li>
+                     <li class="pr">
+                         <span>您整理好电子版理赔材料发送至邮箱或上传到APP或微信公众号后，理赔专员将在2个工作日内答复，
+                         		并指引您补充齐全材料邮寄，协助您向保险公司申请理赔。</span>
+                        <!--  <span id="baoan">
+	                          <p zm-if="{@obj.zmProductDocument!=undefined}">
+		                    	<span zm-for="doc in obj.zmProductDocument">
+		                    		<span zm-if="{doc.type!=undefined && doc.type==2}">
+		                    			 <a zm-attr="href:://baodan.zhongmin.cn/claim/regular/{doc.fileName}" target="_blank" class="flow-link">{doc.name}</a>
+		                    		</span>
+		                    	</span>
+	                  		  </p>
+                         </span> -->
+
+                         <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa flow-icon"/>
+                     </li>
+                     <li class="pr">
+                         <sapn>中民保险经纪股份有限公司会通过理赔绿色通道帮助您同保险公司交涉，督促保险公司尽快结案。</sapn>
+                         <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa flow-icon"/>
+                     </li>
+                 </ul>
+                 <div class="direct-box" zm-if="{@obj.zmProductBySite.remInder != undefined}"><span>{@obj.zmProductBySite.remInder}</span></div>
+            </div>
+        </div>
+        <!--用户评论-->
+    </div>
+    <!--投保示例-->
+    <div class="section2 clearfix" style="display: none" id="example">
+        <h3 class="sec1-tit1"><img src="//images.zhongmin.cn/zhongmin2017/details/images/pro-list-icon6.png" class="mr20 ver-ali-middle"/><span class="ver-ali-middle" zm-if="{@obj!=undefined}">{@obj.productName==undefined?"":@obj.productName}</span></h3>
+        <div class="pad-box" zm-if="{@obj.zmProductBySite!=undefined}">
+            <p class="mt14">{@obj.zmProductBySite.insuExample==undefined?"":@obj.zmProductBySite.insuExample}</p>
+        </div>
+    </div>
+    <!--常见问题-->
+    <div class="section2 clearfix" style="display: none" id="question">
+        <div class="pr" style="margin-bottom: 40px">
+            <img src="//images.zhongmin.cn/zhongmin2017/details/images/zx-img.jpg" alt=""/>
+            <a class="consult-btn pa" onclick="Detector.floatclick();return false;" href="javascript:void(0);" ref="nofollow"></a>
+        </div>
+        <span zm-for="question in obj.questionList">
+          <h3 class="sec1-tit1">
+        	<img src="//images.zhongmin.cn/zhongmin2017/details/images/pro-list-icon7.png" class="mr20 ver-ali-middle"/>
+        	<span class="ver-ali-middle">{question.questionName==undefined?"":question.questionName}</span>
+	      </h3>
+	      <div class="pad-box">
+	         <p class="mt14">{question.answer==undefined?"":question.answer}</p>
+	      </div>
+        </span>
+    </div>
+    <!--理赔指引-->
+    <div class="section2 clearfix" style="display: none" id="claimsGuide2">
+        <h3 class="sec1-tit1"><img src="//images.zhongmin.cn/zhongmin2017/details/images/pro-list-icon4.png" class="mr20 ver-ali-middle"/><span class="ver-ali-middle">理赔指引</span></h3>
+        <img src="//images.zhongmin.cn/zhongmin2017/details/images/bazy-img.jpg" class="ver-ali-middle"/>
+        <div class="pad-box">
+            <ul class="bazy-flow-box clearfix">
+                <li class="pr">
+                    <span>保险事故发生后，请第一时间拨打中民报案电话：400-8822-300或进入中民APP、微信公众号-理赔进行报案。</span>
+                    <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa flow-icon"/>
+                </li>
+                <li class="pr">
+                  	<span>报案成功后，我们会将理赔所需的材料及理赔相关注意事项发送至您邮箱。</span>
+                    <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa flow-icon"/>
+                </li>
+                <li class="pr">
+                   <sapn>您整理好电子版理赔材料发送至邮箱或上传到APP或微信公众号后，理赔专员将在2个工作日内答复，
+                         		并指引您补充齐全材料邮寄，协助您向保险公司申请理赔。</sapn>
+                    <!-- <span id="suopei">
+	                       <p zm-if="{@obj.zmProductDocument!=undefined}">
+		                    	<span zm-for="doc in obj.zmProductDocument">
+		                    		<span zm-if="{doc.type!=undefined && doc.type==2}">
+		                    			 <a zm-attr="href:://baodan.zhongmin.cn/claim/regular/{doc.fileName}" target="_blank" class="flow-link">{doc.name}</a>
+		                    		</span>
+		                    	</span>
+	                  	  </p>
+                    </span> -->
+                    <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa flow-icon"/>
+                </li>
+                <li class="pr">
+					<span>中民保险经纪股份有限公司会通过理赔绿色通道帮助您同保险公司交涉，督促保险公司尽快结案。</span>
+                    <img src="//images.zhongmin.cn/zhongmin2017/details/images/det-icon17.png" class="pa flow-icon"/>
+                </li>
+            </ul>
+            <div class="direct-box" zm-if="{@obj.zmProductBySite.remInder != undefined}"><span>{@obj.zmProductBySite.remInder}</span></div>
+        </div>
+    </div>
+    <!--用户评论-->
+    <div class="section2 clearfix" style="display: none; min-height:0 !important">
+    </div>
+</div>
+<div  class="com-layout clearfix">
+<div class="section2 clearfix" id="imported_comment">
+
+
+
+
+
+
+    <script type="text/javascript">
+   	var $contextPath="";
+	</script>
+	<script type="text/javascript" src="//images.zhongmin.cn/wap/js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="/js/comment/zmJs-commentsall.js"></script>
+	<script type="text/javascript" src="/js/comment/commentsRefreshList.js"></script>
+	<script type="text/javascript" src="/js/comment/consult.js"></script>
+	<script type="text/javascript" src="/js/header/headerDeal.js"></script>
+		<script type="text/javascript" src="/js/login/login.js?var=20181113-1"></script>
+	<script type="text/javascript" src="/js/comment/commentLogin.js"></script>
+	<link href="/css/slider/slider.css" rel="stylesheet" type="text/css" />
+	<script src="/js/common/slider.js" type="text/javascript"></script>
+	<script src="/js/login/NewCommon.js" type="text/javascript"></script>
+    <script type="text/javascript">
+	$(function(){
+    	changeCommentsTab('#comment-tab-boxnew','#commentnew .comment-con-box','c-cur');
+    	initZMJs([entityAll,pageInfoAll,commentsInfo]);
+		refreshList(2,0);
+		commentsInfo.list=[]
+		$.post("/product/commentsInfo",{"pid":pid},function (result) {
+			commentsInfo.list = result.data;
+			commentsInfo.refreach();
+			getLoginInfo();
+	         //添加导航栏评论数据
+			 $('#tab5').append("(" + $(".com-list-box2.flol").find('span').html() + ")");
+			$("#comment-tab-boxnew li:eq(0)").html('<a href="javascript:void(0)">全部评论 ' + result.data.commentsCount + '</a>');
+			$("#comment-tab-boxnew li:eq(1)").html('<a href="javascript:void(0)">产品评论 ' + result.data.productCommentsCount + '</a>');
+			$("#comment-tab-boxnew li:eq(2)").html('<a href="javascript:void(0)">理赔评论 ' + result.data.claimCommentsCount + '</a>');
+			if(commentsInfo.list.hotComments.length==0){
+				$("#hotimg1").hide();
+			}
+			if(commentsInfo.list.hotProductComments.length==0){
+				$("#hotimg2").hide();
+			}
+			if(commentsInfo.list.hotClaimComments.length==0){
+				$("#hotimg3").hide();
+			}
+			if(commentsInfo.list.productCommentsCount == 0) {
+				$('#comment-tab-boxnew2').hide();
+			}
+			if(commentsInfo.list.claimCommentsCount == 0) {
+				$('#comment-tab-boxnew3').hide();//comment-col pro-detail-nav-cur
+			}
+			if(loginInfo.data == undefined || loginInfo.data.isLogin !=1){
+				$(".ml16").show();
+			}else{
+				$(".ml16").hide();
+			}
+			//查询全部评论
+			if(commentsInfo.list.commentsCount==0){
+				$('#pagenav1').hide();
+				//list.commentsCount
+				$('.comment-col').hide();
+			}
+			var rate=parseFloat(commentsInfo.list.percentLvl5+commentsInfo.list.percentLvl4);
+			if(rate == undefined || rate ==null || rate==0){
+				rate=100;
+			}
+			$("#rate").val(rate);
+			$(".rate").text(rate);
+			$("#bar5").css("width", commentsInfo.list.percentLvl5*3);
+			$("#bar4").css("width", commentsInfo.list.percentLvl4*3);
+			$("#bar3").css("width", commentsInfo.list.percentLvl3*3);
+			$("#bar2").css("width", commentsInfo.list.percentLvl2*3);
+			$("#bar1").css("width", commentsInfo.list.percentLvl1*3);
+		},'json');
+
+	})
+    </script>
+		<!--用户评论-->
+
+        <h3 class="sec1-tit1 mt40" style="margin-top:-50px !important;"><img src="//images.zhongmin.cn/zhongmin2017/details/images/pro-list-icon5.png" class="mr20 ver-ali-middle"/><span class="ver-ali-middle">用户评论</span></h3>
+        <div class="pad-box">
+        <div class="comment-info-box clearfix" id="commentInfo1">
+            <div class="com-list-box1 flol zm_hide">
+                <!-- <span>{@list.percentRecommend}%</span><b>推荐</b> -->
+                <span>{@list.percentRecommend == 0 ? 100 :@list.percentRecommend}%</span><b>推荐</b>
+            </div>
+            <div class="com-list-box2 flol zm_hide">
+                <span>{@list.commentsCount}</span><b>条评论</b>
+            </div>
+            <div class="flol com-list-box3 zm_hide">
+                <dl class="clearfix">
+                    <dt class="flol"><b>非常满意</b><span>（{@list.commentLvl5}）</span></dt>
+                    <dd><span id="bar5" class="column"></span></dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt class="flol"><b>满意</b><span>（{@list.commentLvl4}）</span></dt>
+                    <dd><span id="bar4" class="column"></span></dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt class="flol"><b>还好</b><span>（{@list.commentLvl3}）</span></dt>
+                    <dd><span id="bar3" class="column"></span></dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt class="flol"><b>一般</b><span>（{@list.commentLvl2}）</span></dt>
+                    <dd><span id="bar2" class="column"></span></dd>
+                </dl>
+                <dl class="clearfix">
+                    <dt class="flol"><b>差</b><span>（{@list.commentLvl1}）</span></dt>
+                    <dd><span id="bar1" class="column"></span></dd>
+                </dl>
+            </div>
+        </div>
+        <!--评论区-->
+        <ul class="comment-tab-box clearfix" id="comment-tab-boxnew">
+            <li class="c-cur" id="comment-tab-boxnew1">全部评论 0</li>
+            <!-- <li id="comment-tab-boxnew2">产品评论 0</li>
+            <li id="comment-tab-boxnew3">理赔评论 0</li> -->
+
+        </ul>
+        <!-- 全部评论 -->
+        <div id="commentnew">
+            <div class="comment-con-box clearfix">
+            	<!--热门评论-->
+                <div class="hot-comment-box" id="hotComment">
+                    <dl class="comment-area clearfix zm_hide" zm-for="item in list.hotComments">
+                        <dt class="flol"><img src="//images.zhongmin.cn/zhongmin2017/details/images/user-hearder.png" alt=""/></dt>
+                        <dd>
+                            <p class="user-name">{item.author}</p>
+                            <div zm-if="{item.commentlevel!=0}">
+                            <p class="mt4" zm-if="{item.commentlevel == 5 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star5.png" alt="" ><span class="ml18 c-999 ver-ali-middle">非常满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 4 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star4.png" alt="" ><span class="ml18 c-999 ver-ali-middle">满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 3 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star3.png" alt="" ><span class="ml18 c-999 ver-ali-middle">还好</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 2 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star2.png" alt="" ><span class="ml18 c-999 ver-ali-middle">一般</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 1 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star1.png" alt="" ><span class="ml18 c-999 ver-ali-middle">差</span></p>
+            				</div>
+                            <p class="comment-con mt10">【{item.commentType == 0 ? "产品" :(item.commentType==1 ? "理赔":"详情页评论")}】{item.contents}</p>
+                            <!-- 客服回复 -->
+                            <p class="reply-con pr" zm-for="r in item.rcomment">
+                                <span class="rep-col">【客服回复】{r.comments}</span>
+                                <img src="//images.zhongmin.cn/zhongmin2017/details/images/reply-icon.png" class="pa reply-icon" />
+                            </p>
+                        </dd>
+                    </dl>
+                </div>
+
+                <img id="hotimg1" src="//images.zhongmin.cn/zhongmin2017/details/images/comment-img.jpg" style="margin-top: -1px;z-index:10"/>
+                <!-- 一般评论 -->
+                <div class="list-box-wrap" id="app1">
+                <div class="nor-comment-box zm_hide" zm-for="item in entity1.list">
+					<dl class="comment-area clearfix">
+						<dt class="flol"><img src="//images.zhongmin.cn/zhongmin2017/details/images/user-hearder.png" alt=""/></dt>
+						<dd>
+            				<p class="user-name"><span>{item.author}</span><span class="com-date-box">{item.adddate}</span></p>
+            			<div zm-if="{item.commentlevel!=0}">
+            				<p class="mt4" zm-if="{item.commentlevel == 5 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star5.png" alt="" ><span class="ml18 c-999 ver-ali-middle">非常满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 4 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star4.png" alt="" ><span class="ml18 c-999 ver-ali-middle">满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 3 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star3.png" alt="" ><span class="ml18 c-999 ver-ali-middle">还好</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 2 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star2.png" alt="" ><span class="ml18 c-999 ver-ali-middle">一般</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 1 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star1.png" alt="" ><span class="ml18 c-999 ver-ali-middle">差</span></p>
+            			</div>
+            				<p class="comment-con mt10">【{item.commentType == 0 ? "产品" :(item.commentType==1 ? "理赔":"详情页评论")}】{item.contents}</p>
+            				<!-- 客服回复 -->
+            				<div zm-for="r in item.rcomment">
+            				<p class="reply-con pr">
+                                <span class="rep-col">【客服回复】{r.comments}</span>　
+                                <img src="//images.zhongmin.cn/zhongmin2017/details/images/reply-icon.png" class="pa reply-icon" />
+                            </p>
+                            </div>
+        				</dd>
+					</dl>
+				</div>
+				</div>
+                <!--分页栏-->
+				<div>
+					<ul class="paging-box clearfix flor" id="pagenav1">
+						<li class="p-out zm_hide" id="homePage1" zm-bind="onclick::@homePageClick(pageInfoAll.pageInfo1)" >首页</li>
+    					<li class="p-out zm_hide" id="upPage1" zm-bind="onclick::@upPageClick(pageInfoAll.pageInfo1)" >上一页</li>
+    					<li zm-for="index in @pageInfo1.indexs"  zm-bind="onclick::@itemClick({index},pageInfoAll.pageInfo1)" zm-attr="class::{index==@pageInfo1.pos?'p-on':''}" >{index}</li>
+    					<li id="downPage1" zm-bind="onclick::@downPageClick(pageInfoAll.pageInfo1)" class="zm_hide">下一页</li>
+    					<li id="tailPage1" zm-bind="onclick::@tailPageClick(pageInfoAll.pageInfo1)" class="zm_hide">末页</li>
+					</ul>
+				</div>
+            </div>
+
+
+            <!-- 产品评论 -->
+            <div class="comment-con-box" style="display: none;">
+                <!-- 热门评论 -->
+                <div class="hot-comment-box" id="hotProductComments">
+                    <dl class="comment-area clearfix zm_hide" zm-for="item in list.hotProductComments">
+                        <dt class="flol"><img src="//images.zhongmin.cn/zhongmin2017/details/images/user-hearder.png" alt=""/></dt>
+                        <dd>
+                            <p class="user-name">{item.author}</p>
+                          <div zm-if="{item.commentlevel!=0}">
+                            <p class="mt4" zm-if="{item.commentlevel == 5}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star5.png" alt="" ><span class="ml18 c-999 ver-ali-middle">非常满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 4}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star4.png" alt="" ><span class="ml18 c-999 ver-ali-middle">满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 3}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star3.png" alt="" ><span class="ml18 c-999 ver-ali-middle">还好</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 2}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star2.png" alt="" ><span class="ml18 c-999 ver-ali-middle">一般</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 1}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star1.png" alt="" ><span class="ml18 c-999 ver-ali-middle">差</span></p>
+            			</div>
+                            <p class="comment-con mt10">【{item.commentType == 0 ? "产品" :(item.commentType==1 ? "理赔":"详情页评论")}】{item.contents}</p>
+                            <!-- 客服回复 -->
+                            <p class="reply-con pr" zm-for="r in item.rcomment">
+                                <span class="rep-col">【客服回复】{r.comments}</span>
+                                <img src="//images.zhongmin.cn/zhongmin2017/details/images/reply-icon.png" class="pa reply-icon" />
+                            </p>
+                        </dd>
+                    </dl>
+                </div>
+                <img id="hotimg2" src="//images.zhongmin.cn/zhongmin2017/details/images/comment-img.jpg" style="margin-top: -1px;z-index:10"/>
+               	<!-- 一般评论 -->
+                <div class="list-box-wrap" id="app2">
+                <div class="nor-comment-box zm_hide" zm-for="item in entity2.list">
+					<dl class="comment-area clearfix">
+						<dt class="flol"><img src="//images.zhongmin.cn/zhongmin2017/details/images/user-hearder.png" alt=""/></dt>
+						<dd>
+            				<p class="user-name"><span>{item.author}</span><span class="com-date-box">{item.adddate}</span></p>
+            			<div zm-if="{item.commentlevel!=0}">
+            				<p class="mt4" zm-if="{item.commentlevel == 5 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star5.png" alt="" ><span class="ml18 c-999 ver-ali-middle">非常满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 4 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star4.png" alt="" ><span class="ml18 c-999 ver-ali-middle">满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 3 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star3.png" alt="" ><span class="ml18 c-999 ver-ali-middle">还好</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 2 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star2.png" alt="" ><span class="ml18 c-999 ver-ali-middle">一般</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 1 }"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star1.png" alt="" ><span class="ml18 c-999 ver-ali-middle">差</span></p>
+            			</div>
+            				<p class="comment-con mt10">【{item.commentType == 0 ? "产品" :(item.commentType==1 ? "理赔":"详情页评论")}】{item.contents}</p>
+            				<!-- 客服回复 -->
+            				<div zm-for="r in item.rcomment">
+            				<p class="reply-con pr">
+                                <span class="rep-col">【客服回复】{r.comments}</span>　
+                                <img src="//images.zhongmin.cn/zhongmin2017/details/images/reply-icon.png" class="pa reply-icon" />
+                            </p>
+                            </div>
+        				</dd>
+					</dl>
+				</div>
+				</div>
+                <!--分页栏-->
+				<div>
+					<ul class="paging-box clearfix flor" id="pagenav2">
+
+						<li class="p-out zm_hide" id="homePage2" zm-bind="onclick::@homePageClick(pageInfoAll.pageInfo2)">首页</li>
+    					<li class="p-out zm_hide" id="upPage2" zm-bind="onclick::@upPageClick(pageInfoAll.pageInfo2)">上一页</li>
+    					<li zm-for="index in @pageInfo2.indexs"  zm-bind="onclick::@itemClick({index},pageInfoAll.pageInfo2)" zm-attr="class::{index==@pageInfo2.pos?'p-on':''}" >{index}</li>
+    					<li class="zm_hide" id="downPage2" zm-bind="onclick::@downPageClick(pageInfoAll.pageInfo2)">下一页</li>
+    					<li class="zm_hide" id="tailPage2" zm-bind="onclick::@tailPageClick(pageInfoAll.pageInfo2)">末页</li>
+					</ul>
+				</div>
+
+            </div>
+            <!-- 理赔评论 -->
+            <div class="comment-con-box" style="display: none">
+            	<div class="hot-comment-box" id="hotClaimComments">
+                    <dl class="comment-area clearfix zm_hide" zm-for="item in list.hotClaimComments">
+                        <dt class="flol"><img src="//images.zhongmin.cn/zhongmin2017/details/images/user-hearder.png" alt=""/></dt>
+                        <dd>
+                            <p class="user-name">{item.author}</p>
+                            <div zm-if="{item.commentlevel!=0}">
+                            <p class="mt4" zm-if="{item.commentlevel == 5}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star5.png" alt=""><span class="ml18 c-999 ver-ali-middle">非常满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 4}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star4.png" alt="" ><span class="ml18 c-999 ver-ali-middle">满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 3}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star3.png" alt=""><span class="ml18 c-999 ver-ali-middle">还好</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 2}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star2.png" alt="" ><span class="ml18 c-999 ver-ali-middle">一般</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 1}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star1.png" alt=""><span class="ml18 c-999 ver-ali-middle">差</span></p>
+            			</div>
+                            <p class="comment-con mt10">【{item.commentType == 0 ? "产品" :(item.commentType==1 ? "理赔":"详情页评论")}】{item.contents}</p>
+                            <!-- 客服回复 -->
+                            <p class="reply-con pr" zm-for="r in item.rcomment">
+                                <span class="rep-col">【客服回复】{r.comments}</span>
+                                <img src="//images.zhongmin.cn/zhongmin2017/details/images/reply-icon.png" class="pa reply-icon" />
+                            </p>
+                        </dd>
+                    </dl>
+                </div>
+                <img id="hotimg3" src="//images.zhongmin.cn/zhongmin2017/details/images/comment-img.jpg" style="margin-top: -1px;z-index:10"/>
+                <!-- 一般评论 -->
+                <div class="list-box-wrap" id="app3">
+                <div class="nor-comment-box zm_hide" zm-for="item in entity3.list">
+					<dl class="comment-area clearfix">
+						<dt class="flol"><img src="//images.zhongmin.cn/zhongmin2017/details/images/user-hearder.png" alt=""/></dt>
+						<dd>
+            				<p class="user-name"><span>{item.author}</span><span class="com-date-box">{item.adddate}</span></p>
+            			<div zm-if="{item.commentlevel!=0}">
+            				<p class="mt4" zm-if="{item.commentlevel == 5}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star5.png" alt=""><span class="ml18 c-999 ver-ali-middle">非常满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 4}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star4.png" alt="" ><span class="ml18 c-999 ver-ali-middle">满意</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 3}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star3.png" alt=""><span class="ml18 c-999 ver-ali-middle">还好</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 2}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star2.png" alt=""><span class="ml18 c-999 ver-ali-middle">一般</span></p>
+            				<p class="mt4" zm-if="{item.commentlevel == 1}"><img class="ver-ali-middle" src="//images.zhongmin.cn/zhongmin2017/details/images/star1.png" alt=""><span class="ml18 c-999 ver-ali-middle">差</span></p>
+            			</div>
+            				<p class="comment-con mt10">【{item.commentType == 0 ? "产品" :(item.commentType==1 ? "理赔":"详情页评论")}】{item.contents}</p>
+            				<!-- 客服回复 -->
+            				<div zm-for="r in item.rcomment">
+            				<p class="reply-con pr">
+                                <span class="rep-col">【客服回复】{r.comments}</span>　
+                                <img src="//images.zhongmin.cn/zhongmin2017/details/images/reply-icon.png" class="pa reply-icon" />
+                            </p>
+                            </div>
+        				</dd>
+					</dl>
+				</div>
+
+				</div>
+
+                <!--分页栏-->
+				<div>
+					<ul class="paging-box clearfix flor" id="pagenav3">
+
+						<li class="p-out zm_hide" id="homePage3" zm-bind="onclick::@homePageClick(pageInfoAll.pageInfo3)">首页</li>
+    					<li class="p-out zm_hide" id="upPage3" zm-bind="onclick::@upPageClick(pageInfoAll.pageInfo3)">上一页</li>
+    					<li zm-for="index in @pageInfo3.indexs"  zm-bind="onclick::@itemClick({index},pageInfoAll.pageInfo3)" zm-attr="class::{index==@pageInfo3.pos?'p-on':''}" >{index}</li>
+    					<li class="zm_hide" id="downPage3" zm-bind="onclick::@downPageClick(pageInfoAll.pageInfo3)">下一页</li>
+    					<li class="zm_hide" id="tailPage3" zm-bind="onclick::@tailPageClick(pageInfoAll.pageInfo3)">末页</li>
+					</ul>
+				</div>
+            </div>
+        </div>
+        <div class="nocomment-box" id="nocomment">
+                    <img src="https://images.zhongmin.cn/zhongmin2017/consultation/images/nocomment.png" alt="">
+                    <p>暂无评论~</p>
+                </div>
+        </div>
+        <div class="clearfix mb20" style="padding-top:0;margin-top:-30px;">
+        			<div class="pad-box">
+            			<ul class="comment-tab-box clearfix" id="comment-tab-box2">
+                			<li class="c-cur">我要评论</li>
+            			</ul>
+           			<div class="pr">
+                		<textarea class="comment-text-area" placeholder="本产品是否满足您的需求？中民保险网的服务您是否满意？您有什么需要我们帮助的？"></textarea>
+               				 <span class="comment-text-nums pa"><span>0</span>/180</span>
+           			</div>
+           				<div class="comment-suport" onclick="isSubmit()">提交</div>
+           				<span class="ml16" onclick="login()" style="cursor:pointer;">请登录后再提交评论</span>
+        			</div>
+    	</div>
+    	<div class="back-block" style="display:none"></div>
+<div class="login-box" style="width: 446px;height: 445px;margin:-222px 0 0 -223px;display:none">
+   <!--tab头部-->
+   <div class="tab-tit-box pr">
+       <span class="cur-tab" style="width:130px">普通登录</span>
+       <span style="width:130px">手机动态码登录</span>
+       <em class="pa closebtn"></em>
+   </div>
+    <!--tab内容-->
+    <div class="tab-con-box" style="padding-right: 40px;height:330px">
+        <div>
+            <!--普通登录-->
+            <div class="tabchangebox">
+                <div class="mb30 pr">
+                    <input id="txtUserNameLogin" class="login-com-input per-icon" type="text" placeholder="请输入手机号/邮箱">
+                </div>
+                <div class="pr"><input id="txtPassWordLogin" class="login-com-input password-icon" type="password" placeholder="请输入6位及以上数字或字母密码"></div>
+                <div class="clearfix">
+                	<span id="commonloginError" class="tips-con"></span>
+                	<a class="flor forlink l-blue" href="/findpwd.jsp?sid=1">忘记密码？</a>
+                </div>
+                <div id="userLogin" class="login-btn">登 录</div>
+                <div class="clearfix"><div class="flor mt8">没有账号？<a class="l-blue" href="/signup.jsp?sid=1">立即注册</a></div></div>
+            </div>
+            <!--手机动态码登录-->
+            <div class="tabchangebox" style="display: none">
+                <div class="mb30 pr"><input id="txtMobile" class="login-com-input tel-icon" type="text" placeholder="请输入手机号"></div>
+                <div class="mb30 pr">
+               	<div id="dragContainer" style="width: 363.98px;">
+               		<div id="dragBg"></div><div id="dragText">拖动滑块验证</div>
+               			<div id="dragHandler" class="dragHandlerBg"></div>
+               		</div>
+                </div>
+                <!-- <div class="mb30 pr">
+                    <input class="login-com-input yzm-icon" type="password" placeholder="请输入图形码">
+                </div> -->
+                <div class="clearfix mb40 pr">
+                    <input id="txtActiveCode" type="text" class="login-com-input mess-input mess-icon" placeholder="请输入短信动态码">
+                    <span id="verifyCodeSend" class="mess-btn" onclick="getSMS()">获取动态码</span>
+                    <!--错误提示-->
+                    <div id="tipDivDym" class="pa tips-con"></div>
+	                <span id="time" class="regYzm wait" style="display:none"><span>59</span>秒后可再次发送</span>
+                </div>
+                <!-- <div id="tipDivDym" class="pa tips-con"></div> -->
+                <div class="login-btn" onclick="dynamicsLogin()">登 录</div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="ip" src="//pv.sohu.com/cityjson?ie=utf-8">
+	var returnCitySN = document.getElementById("ip").value;
+</script>
+<script>
+        $(function(){
+            var limitnums = 180;
+    		$('.comment-text-area').bind('input propertychange', function() {
+       		var textLength = $(this).val().length
+        	if(textLength >= limitnums){
+           	 $('.comment-text-nums span').text(180)
+            	$(this).val($(this).val().substring(0,180));
+        	}else{
+            	$('.comment-text-nums span').text(textLength)
+        	}
+    		});
+
+        })
+ </script>
+
+  <script type="text/javascript">
+	$(function(){
+		//绑定提交事件
+		$(".comment-suport").on("click",function(){
+			 submit();
+		});
+		function submit(){
+			var text = $(".comment-text-area").val();
+			if(text.length <= 10){
+				//$(".tips.text-red").show();
+				createAlert("请输入十个字符以上！");
+				return;
+			}
+			//保存评论的数据
+			saveData(text);
+		}
+
+		function saveData(text){
+			var ip = returnCitySN["cip"];
+			//var orderId = getUrlParam("orderId");
+			var zmClaimId = getUrlParam("zmClaimId");
+			var data = {
+					"contents":text,
+					"zmSiteId":sid,
+					"commentType":2,
+					"zmProductid":pid,
+					/* "zmUserDbId":orderPro.orderPro.zmOrder.zmUserdbid,
+					"author":additionalComments.additionalComments[0].zmComments.author,
+					"zmProductid":orderPro.orderPro.zmOrderProduct.zmProductId,
+					"subnumber":orderPro.orderPro.zmOrder.subNumber.trim(), */
+					"addip":ip,
+					"isComment":1,
+					"ishide":null,
+					"ispass":null,
+					"isshow":null
+
+			}
+			$.post($contextPath+"/product/insertComment",data,function (args){
+			if(args.code == 200){
+				createAlert("提交成功");
+				$(".comment-text-area").val('');
+			}else if(args.code == 500){
+				//createAlert("请登录后再提交评论");
+				$(".back-block").show();
+				$(".login-box").show();
+			}else if(args.code == 501){
+				createAlert("您的操作过于频繁，请稍后重试");
+			}
+
+			},'json');
+		}
+	});
+	function login(){
+		$(".back-block").show();
+		$(".login-box").show();
+	}
+   </script>
+ 	<!--从列表页跳转时更改 value="" -->
+</div>
+</div>
+<input type="hidden" id = "rate" value=""/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+	 var _hmt = _hmt || [];
+	$(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?9634323798be51b19359016bdfd65b32";
+	  var s = document.getElementsByTagName("script")[0];
+	  s.parentNode.insertBefore(hm, s);
+	})
+	</script>
+     <!--底部-->
+    <div class="friend-link-bg">
+        <div class="layout index">
+             <div class="friend-link">
+                <span class="friend-link-tit">友情链接：</span>
+                <div class="friend-link-list">
+                 <div id="indexInfo" >
+
+                    <a href="http://www.iachina.cn/"  target="_blank">中国保险行业协会</a>
+
+                    <a href="https://iask.sina.com.cn/c/159.html"  target="_blank">新浪爱问保险</a>
+
+                    <a href="http://insurance.cngold.org/"  target="_blank">金投保险</a>
+
+                    <a href="http://finance.qq.com/money/insurance/"  target="_blank">腾讯保险</a>
+
+                    <a href="http://www.china-insurance.com/"  target="_blank">中国保险网</a>
+
+                    <a href="http://finance.sina.com.cn/money/insurance/"  target="_blank">新浪保险</a>
+
+                    <a href="http://insurance.jrj.com.cn/"  target="_blank">金融界保险</a>
+
+                    <a href="http://insurance.cnfol.com/"  target="_blank">中金保险</a>
+
+                    <a href="http://insurance.hexun.com/"  target="_blank">和讯网保险</a>
+
+                    <a href="http://www.circ.gov.cn/web/site0/"  target="_blank">中国保监会</a>
+
+                    <a href="http://www.kaixinbao.com"  target="_blank">开心保保险</a>
+
+                 </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <div class="guide-bg">
+        <div class="layout index">
+            <div class="guide-wrap">
+                <div class="guide-items clearfix">
+
+
+
+                	 <dl >
+
+
+
+
+
+                	     <dt ><span >服务中心</span><span  class="guide-items-i guide-i5"></span></dt>
+
+
+
+                		<dd >
+
+
+                		     <a href="/discloseinfo.jsp" target="_blank" >信息披露</a>
+
+
+                		</dd>
+
+                		<dd >
+
+
+                		     <a href="/query/search.jsp?sid=1&state=3" target="_blank" >理赔查询</a>
+
+
+                		</dd>
+
+                		<dd >
+
+
+                		     <a href="/query/search.jsp?sid=1&state=2" target="_blank" >报案查询</a>
+
+
+                		</dd>
+
+                		<dd >
+
+
+                		     <a href="/query/search.jsp?sid=1&state=1" target="_blank" >保单查询</a>
+
+
+                		</dd>
+
+                	</dl>
+
+
+                	 <dl >
+
+
+
+
+                	     <dt ><span >理赔指南</span><span  class="guide-items-i guide-i4"></span></dt>
+
+
+
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=理赔常见问题&location=理赔指南&id=37" target="_black" >理赔常见问题</a>
+
+
+
+                		</dd>
+
+                		<dd >
+
+
+                		     <a href="/claimService/claimService.jsp?sid=1" target="_blank" >理赔流程</a>
+
+
+                		</dd>
+
+                	</dl>
+
+
+                	 <dl >
+
+
+
+                	     <dt ><span >支付说明</span><span  class="guide-items-i guide-i3"></span></dt>
+
+
+
+
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=第三方支付说明&location=支付说明&id=36" target="_black" >第三方支付说明</a>
+
+
+
+                		</dd>
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=网银支付说明&location=支付说明&id=36" target="_black" >网银支付说明</a>
+
+
+
+                		</dd>
+
+                	</dl>
+
+
+                	 <dl >
+
+
+                	     <dt ><span >保单说明</span><span  class="guide-items-i guide-i2"></span></dt>
+
+
+
+
+
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=退保说明&location=保单说明&id=35" target="_black" >退保说明</a>
+
+
+
+                		</dd>
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=纸质保单配送&location=保单说明&id=35" target="_black" >纸质保单配送</a>
+
+
+
+                		</dd>
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=保单变更说明&location=保单说明&id=35" target="_black" >保单变更说明</a>
+
+
+
+                		</dd>
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=电子保单说明&location=保单说明&id=35" target="_black" >电子保单说明</a>
+
+
+
+                		</dd>
+
+                	</dl>
+
+
+                	 <dl >
+
+                	     <dt ><span >新手指南</span><span  class="guide-items-i guide-i1"></span></dt>
+
+
+
+
+
+
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=保险选购技巧&location=新手指南&id=114" target="_black" >保险选购技巧</a>
+
+
+
+                		</dd>
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=发票说明&location=新手指南&id=114" target="_black" >发票说明</a>
+
+
+
+                		</dd>
+
+                		<dd >
+
+                	         <a href="/question.jsp?name=网上投保流程&location=新手指南&id=114" target="_black" >网上投保流程</a>
+
+
+
+                		</dd>
+
+                	</dl>
+
+                </div>
+                <div class="guide-code-wrap">
+                    <div class="guide-code-box">
+                        <div class="guide-code mr10">
+                            <img width="106px" src="//images.zhongmin.cn/index2016/images/qrcode-wechat.png">
+                            <p>关注微信优惠抢先看</p>
+                        </div>
+                    </div>
+                    <div class="guide-code-box">
+                        <div class="guide-code mr10">
+                            <img width="106px" src="//images.zhongmin.cn/index2016/images/qrcode-app.png">
+                            <p>下载APP理赔更省心</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bg">
+        <div class="layout index">
+            <div class="footer-wrap">
+                <div class="footer-txt-index clearfix">
+                    <div class="footer-link">
+                        <a href="/question.jsp?name=%E5%85%AC%E5%8F%B8%E7%AE%80%E4%BB%8B&location=%E5%85%B3%E4%BA%8E%E4%B8%AD%E6%B0%91&id=83" target="_blank">公司简介</a>
+                        <a href="/question.jsp?name=%E5%90%88%E4%BD%9C%E5%B9%B3%E5%8F%B0&location=%E5%85%B3%E4%BA%8E%E4%B8%AD%E6%B0%91&id=83" target="_blank">合作平台</a>
+                        <a href="/company/list?sid=1&areacode=HPPLNG" target="_blank">合作伙伴</a>
+                        <a href="/question.jsp?name=%E9%9A%90%E7%A7%81%E8%AF%B4%E6%98%8E&location=%E5%85%B3%E4%BA%8E%E4%B8%AD%E6%B0%91&id=83" target="_blank">隐私声明</a>
+                        <a href="/question.jsp?name=%E8%AF%9A%E8%81%98%E8%8B%B1%E6%89%8D&location=%E5%85%B3%E4%BA%8E%E4%B8%AD%E6%B0%91&id=83" target="_blank">诚聘英才</a>
+                        <a href="/question.jsp?name=联系我们&location=关于中民&id=83" target="_blank">联系我们</a>
+                        <a href="/siteMaps.jsp" class="fl-last-a" target="_blank">网站地图</a>
+                    </div>
+                    <div class="footer-contact-wrap">
+                        <span class="footer-contact mr18"><span class="footer-i footer-i-call"></span>7*24小时客户服务热线：400-8822-300</span>
+                        <span class="footer-contact"><span class="footer-i footer-i-complaint"></span>投诉电话：0755-25916387（工作日 8:30-17:30）</span>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>
+                        保险销售许可：中民保险经纪股份有限公司（保险经纪业务许可证：
+                        <a href="//images.zhongmin.cn/images/保险经纪业务许可证.jpg" rel="nofollow" target="_blank">260636000000800</a>） |
+                        <a href="http://www.miibeian.gov.cn/" rel="nofollow" target="_blank">粤ICP备08114724号-2 </a> 电信增值业务许可证：
+                        <a href="//images.zhongmin.cn/images/电信增值业务许可证.jpg" rel="nofollow" target="_blank">粤B2-20090313</a> ｜ 中国保监会网销许可&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投资有风险，选择需谨慎
+                    </p>
+                    <p>Copyright©2008-2018 www.zhongmin.cn. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END底部-->
+
+
+
+
+
+</div>
+
+</body>
+	<script type="text/javascript">
+	$(function(){
+		if(isShare()){
+    		$("#addCartButton").hide();
+    		$("#securityProgram").hide();
+    		$(".addcompare").hide();
+    		$(".collection").hide();
+    	}
+		var  policyterm=$("#policyterm").val();
+		var periods=$("#periods").val();
+		var list=new Array(periods);
+
+		$("#policyTerm").click(function(){
+			$("policyterm").each(function(){
+				if(policyterm=="20"){
+					list[0].hide();
+					list[1].addClass("option-cur");
+					list[2].hide();
+
+					}else if(policyterm=="30"){
+						list[0].hide();
+						list[1].hide();
+						list[2].addClass("option-cur");
+					}else{
+						list[0].addClass("option-cur");
+					}
+
+			  });
+		});
+	})
+	function replaceHTML(node,price,isMult){
+	    	if(isMult == 1){
+	    		$(node).html(price.toFixed(0) + "<span style=\"font-size:24px\" >中民积分</span>");
+	    	}else{
+	    		$(node).html((price*100).toFixed(0) + "<span style=\"font-size:24px\" >中民积分</span>");
+	    	}
+	    	if($(node).parent().html() != null){
+	    		var htmlVal = $(node).parent().html();
+	    		htmlVal = htmlVal.replace("¥","");
+	    		htmlVal = htmlVal.replace("元","");
+	    		$(node).parent().html(htmlVal);
+	    	}
+	    }
+	    function isShare(){
+	    	 if(getUrlParam('channel') != null && 'zm123' == $.trim(getUrlParam('channel'))){
+	    		 return true;
+	    	 }else{
+	    		 return false;
+	    	 }
+	    }
+	</script>
+	<!-- <script type="text/javascript">
+	var requestParameter;
+	var parameter = {
+       		pid:parseInt(requestParameter["pid"]),
+       		sid:sid,
+       		safeAge:parseInt($("#realAge").attr("value")==undefined?$("#minPriceAge").attr("value"):$("#realAge").attr("value")),
+       		safeTime:parseInt(requestParameter["safeTime"]),
+			payTime:parseInt(requestParameter["payTime"]),
+			pay:{},
+	 	    refreach:function(){
+	 	      refreachView(this);
+
+	 	    }
+			//safeAge:parameter["safeAge"]
+        }
+
+function getSafeCovPriceByItem(){
+
+$.post($contextPath+"/test/detail",function(data){
+	 if(data.code == 200){
+		 parameter.pay = data.data;
+		 parameter.refreach();
+	 	}
+
+	 },'json');
+}
+
+
+	</script> -->
+  <!-- <script type="text/javascript">
+  function setAgeParam(){
+    var saveDataAry=[];
+  	var parameter = {
+     		pid:parseInt(requestParameter["pid"]),
+     		age:parseInt($("#realAge").attr("value")==undefined?$("#minPriceAge").attr("value"):$("#realAge").attr("value")),
+     		policyterm:parseInt(requestParameter["policyterm"]),
+     		policytermtype:parseInt(requestParameter["policytermtype"])
+			//safeAge:parameter["safeAge"]
+      }
+     	setPayAndSaveParameter(parameter)
+		saveDataAry.push(parameter);
+     return saveDataAry;
+  }
+  //根据选中的保障期限获取缴费期限
+
+ //许子杰新加
+function getSafeCovPriceByItem(){
+	var saveDataAry = setAgeParam();
+	var url = $contextPath+"/test/detail";
+    $.ajax({
+        type:"POST",
+        url:url,
+        dataType:"json",
+        contentType:"application/json",
+        data:JSON.stringify(saveDataAry),
+        success:function(result){
+	          	if( result.code == 200 ){
+        		errorFlag='true';
+        		requestParameter["priceResult"] = result.data;
+			 	}else{
+			 		createAlert("不在可保障期限范围内");
+	  			 	errorFlag='false';
+			 	}
+        }
+     })
+  }
+  </script> -->
+
+
+</html>
